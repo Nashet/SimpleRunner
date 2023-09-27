@@ -1,6 +1,9 @@
 ﻿namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
-	internal class CollectableViewModel
+	/// <summary>
+	/// The only purpose of this class is intermediate between the view and the model of some collectable object.
+	/// </summary>
+	public class CollectableViewModel
 	{
 		private int v1;
 		private int v2;

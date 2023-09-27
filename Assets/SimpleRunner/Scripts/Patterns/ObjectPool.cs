@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Nashet.SimpleRunner.Patterns
 {
+	/// <summary>
+	/// That implements the Object Pool pattern.
+	/// Dont foget to return objects to pool when you don't need them anymore.
+	/// </summary>
 	public class ObjectPool : MonoBehaviour
 	{
 		[SerializeField] private GameObject prefab;

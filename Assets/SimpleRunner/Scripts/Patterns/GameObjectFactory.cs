@@ -2,15 +2,14 @@
 
 namespace Nashet.SimpleRunner.Patterns
 {
-	public class GameObjectFactory : IGameObjectFactory
+	/// <summary>
+	/// That particular implementation of IGameObjectFactory is used to create objects from the object pool.
+	/// </summary>
+	public class PooledGameObjectFactory : IGameObjectFactory
 	{
 		private readonly ObjectPool objectPool;
 
-		public GameObjectFactory()
-		{
-		}
-
-		public GameObjectFactory(ObjectPool pool)
+		public PooledGameObjectFactory(ObjectPool pool)
 		{
 			objectPool = pool;
 		}
