@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Configs
@@ -7,5 +8,6 @@ namespace Nashet.SimpleRunner.Configs
 	public class MapGenerationConfig : ScriptableObject
 	{
 		public List<CollidableObjectConfig> objects = new();
+		public PlayerEffectBaseConfig defaultPlayerAction;
 	}
 }

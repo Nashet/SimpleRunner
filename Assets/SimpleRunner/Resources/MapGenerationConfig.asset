@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac984ffd66439f7448f58d3c9db77b53, type: 2}
   - {fileID: 11400000, guid: a82f98dfbb514d94cb127e55a6143355, type: 2}
   - {fileID: 11400000, guid: 039343dc3aba3f240a440eaaf4dbc691, type: 2}
+  defaultPlayerAction: {fileID: 11400000, guid: d783e879edd039748bd4cf7b89236c1c, type: 2}

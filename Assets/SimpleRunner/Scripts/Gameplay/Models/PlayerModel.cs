@@ -1,22 +1,31 @@
-﻿namespace Nashet.SimpleRunner.Gameplay.Models
+﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
+using UnityEngine;
+
+namespace Nashet.SimpleRunner.Gameplay.Models
 {
-	public class PlayerModel
+	public delegate void OnPlayerMovedDelegate(Vector3 newPosition);
+
+	public class PlayerModel//todo rename it
 	{
-		private float _position;
-		private float _speed;
+		public event OnPlayerMovedDelegate OnPlayerMoved;
 
-		public float Position { get { return _position; } set { _position = value; } }
-		public float Speed { get { return _speed; } set { _speed = value; } }
+		private Vector3 _position;
+		private PlayerEffectBaseConfig defaultAction;
 
-		public PlayerModel(float startingPosition, float startingSpeed)
+		public Vector3 Position
 		{
-			_position = startingPosition;
-			_speed = startingSpeed;
+			get { return _position; }
+			set
+			{
+				_position = value;
+				OnPlayerMoved?.Invoke(_position);
+			}
 		}
 
-		public void Update(float deltaTime)
+		public PlayerModel(PlayerEffectBaseConfig defaultAction, Vector2 startingPosition)
 		{
-			_position += _speed * deltaTime;
+			this.defaultAction = defaultAction;
+			_position = startingPosition;
 		}
 	}
 }

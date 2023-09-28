@@ -1,20 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 namespace Nashet.SimpleRunner.Gameplay.Views
 {
 	/// <summary>
-	/// The only purpose of this class is to handle visuals of the player
+	/// The only purpose of this class is to handle visuals of the player and handle collisions.
 	/// </summary>
 	public class PlayerView : MonoBehaviour, IPlayerView
 	{
-		public event PlayerCollided OnPlayerCollided;
-		private void OnCollisionEnter(Collision collision)
+		public Vector3 Position => transform.position;
+
+		public event OnPlayerCollidedDelegate OnPlayerCollided;
+
+		public void PlayerMovedHandler(Vector3 newPosition)
 		{
-			if (collision.gameObject.CompareTag("Obstacle"))
-			{
-				OnPlayerCollided?.Invoke();
-			}
+			transform.position = newPosition;
+			Debug.Log("!Player moved to " + transform.position);
+		}
+
+		void OnTriggerEnter2D(Collider2D other)
+		{
+			GameObject coin = other.gameObject;
+			var collectable = coin.GetComponent<CollectablesView>();
+			OnPlayerCollided?.Invoke(collectable.PlayerEffectBaseConfig);
+			Destroy(coin);
 		}
 	}
 }

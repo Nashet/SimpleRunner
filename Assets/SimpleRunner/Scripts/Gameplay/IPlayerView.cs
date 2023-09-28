@@ -1,12 +1,18 @@
-﻿namespace Nashet.SimpleRunner.Gameplay
+﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
+using UnityEngine;
+
+namespace Nashet.SimpleRunner.Gameplay
 {
-	public delegate void PlayerCollided();
+	public delegate void OnPlayerCollidedDelegate(PlayerEffectBaseConfig playerEffectBaseConfig);
 
 	/// <summary>
-	/// Thats an interface for the player view. It provides an event for when the player collides with something.
+	/// Thats an interface for the player view. 
 	/// </summary>
 	public interface IPlayerView
 	{
-		event PlayerCollided OnPlayerCollided;
+		Vector3 Position { get; }
+
+		event OnPlayerCollidedDelegate OnPlayerCollided;
+		void PlayerMovedHandler(Vector3 newPosition);
 	}
 }

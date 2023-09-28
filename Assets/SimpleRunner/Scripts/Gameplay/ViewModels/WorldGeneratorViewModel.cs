@@ -1,36 +1,33 @@
 ﻿
 using Nashet.SimpleRunner.Configs;
-using Nashet.SimpleRunner.Patterns;
+using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
 	/// <summary>
-	/// The purpose of this class is to communicate with world model and with nested view models
+	/// The purpose of this class is to communicate with nested View Models.
 	/// </summary>
-	public class WorldGeneratorViewModel
+	public class WorldGeneratorViewModel // todo rename it
 	{
 		private PlayerViewModel playerVM;
-		private IGameObjectFactory gameObjectFactory;
+		private MapGenerationConfig mapGenerationConfig;
 
 		public WorldGeneratorViewModel(MapGenerationConfig mapGenerationConfig)
 		{
+			this.mapGenerationConfig = mapGenerationConfig;
 
+			Vector2 playerStartingPosition = new Vector2(0, 0);
+			playerVM = new PlayerViewModel(mapGenerationConfig.defaultPlayerAction, playerStartingPosition);
 		}
 
-		public void Initialize(IPlayerView playerView, IGameObjectFactory gameObjectFactory)
+		public void InitializeWithView(IPlayerView playerView)
 		{
-			this.gameObjectFactory = gameObjectFactory;
+			playerVM.InitializeWithView(playerView);
+		}
 
-			playerVM = new PlayerViewModel(0, 0);
-			playerVM.Initialize(playerView);
-
-			for (int i = 0; i < 10; i++)
-			{
-				var collecctableVM = new CollectableViewModel(0, 0);
-				var gameObject = gameObjectFactory.CreateObject();
-
-				collecctableVM.Initialize(gameObject.GetComponent<ICollectableView>());
-			}
+		internal void Update(float fixedDeltaTime)
+		{
+			playerVM.Update(fixedDeltaTime);
 		}
 	}
 }
