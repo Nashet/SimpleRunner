@@ -13,6 +13,7 @@ namespace Nashet.SimpleRunner
 	{
 		[SerializeField] private PlayerView playerView;
 		[SerializeField] private string configHolderName;
+		[SerializeField] private CameraView cameraView;
 
 		public WorldViewModel WorldVM { get; private set; }
 
@@ -22,7 +23,7 @@ namespace Nashet.SimpleRunner
 
 			WorldVM = new WorldViewModel(configService.GetConfig<GameplayConfig>());
 
-			WorldVM.InitializeWithView(playerView);
+			WorldVM.InitializeWithView(playerView, cameraView);
 		}
 	}
 }

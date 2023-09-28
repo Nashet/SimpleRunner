@@ -49,13 +49,14 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			OnPlayerMoved?.Invoke(newPosition);
 		}
 
-		public void InitializeWithView(IPlayerView playerView)
+		public void InitializeWithView(IPlayerView playerView, CameraView cameraView)
 		{
 			playerModel.Position = playerView.Position;
 
 			playerView.OnPlayerCollided += OnPlayerCollidedHandler;
 
 			OnPlayerMoved += playerView.PlayerMovedHandler;
+			OnPlayerMoved += cameraView.PlayerMovedHandler;
 		}
 
 		private void OnPlayerCollidedHandler(GameObject other)

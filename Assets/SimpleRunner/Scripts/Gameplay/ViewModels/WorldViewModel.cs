@@ -16,9 +16,9 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			playerVM = new PlayerViewModel(gameplayConfig.defaultPlayerAction, gameplayConfig.playerStartingPosition);
 		}
 
-		public void InitializeWithView(IPlayerView playerView)
+		public void InitializeWithView(IPlayerView playerView, Views.CameraView cameraView)
 		{
-			playerVM.InitializeWithView(playerView);
+			playerVM.InitializeWithView(playerView, cameraView);
 		}
 
 		internal void Update(float fixedDeltaTime)
