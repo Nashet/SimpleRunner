@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
-  m_Name: SlowDownCoinConfig
+  m_Script: {fileID: 11500000, guid: 4f27d421526b4cf48ac7ac485fb23229, type: 3}
+  m_Name: CollectableEffectFlightConfig
   m_EditorClassIdentifier: 
-  effectTime: 10
-  effect: {fileID: 11400000, guid: d5874b53dc1f3ee4b94bbece3c5d9f53, type: 2}
+  type: 1
+  speed: 0
+  height: 0

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f27d421526b4cf48ac7ac485fb23229, type: 3}
-  m_Name: PlayerEffectFlightConfig
+  m_Script: {fileID: 11500000, guid: 1bcbb30af9073464c93d665ac04d1c21, type: 3}
+  m_Name: GameplayConfig
   m_EditorClassIdentifier: 
-  type: 1
-  speed: 0.1
-  height: 2
+  defaultPlayerAction: {fileID: 11400000, guid: fa5b63dcd24fb5b4789183d5d395e438, type: 2}

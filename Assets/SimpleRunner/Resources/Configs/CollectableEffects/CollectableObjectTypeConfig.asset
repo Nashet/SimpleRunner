@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bcbb30af9073464c93d665ac04d1c21, type: 3}
-  m_Name: GameplayConfig
+  m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
+  m_Name: CollectableObjectTypeConfig
   m_EditorClassIdentifier: 
-  ExplodeLineTreshold: 3
+  effectTime: 10
+  effect: {fileID: 0}

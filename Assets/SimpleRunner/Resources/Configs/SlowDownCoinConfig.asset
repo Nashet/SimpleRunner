@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
-  m_Name: SpeedUpCoinConfig
+  m_Name: SlowDownCoinConfig
   m_EditorClassIdentifier: 
   effectTime: 10
-  effect: {fileID: 11400000, guid: b86eb76c03280824792fc72401c6a9d8, type: 2}
+  effect: {fileID: 11400000, guid: dfc0a060c377d554185a1fac5cff1b64, type: 2}

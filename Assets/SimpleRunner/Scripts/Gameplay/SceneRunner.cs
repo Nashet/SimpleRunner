@@ -19,7 +19,7 @@ namespace Nashet.SimpleRunner
 			if (timer >= interval)
 			{
 				// Execute the code block here
-				sceneStarter.WorldGeneratorVM.Update(Time.fixedDeltaTime);
+				sceneStarter.WorldVM.Update(Time.fixedDeltaTime);
 
 				timer = 0f; // Reset the timer
 			}

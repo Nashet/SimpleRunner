@@ -11,12 +11,12 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	{
 		//todo: might be better to use DI instead of static factory
 		//toso: its possible to caceh strategies and reuse them
-		public static IPlayerMovementStrategy CreateMovementStrategy(PlayerEffectBaseConfig config)
+		public static IPlayerMovementStrategy CreateMovementStrategy(CollectableEffectConfig config)
 		{
 			return config.type switch
 			{
-				PlayerEffectType.Run => new WalkingMovementStrategy(config as PlayerEffectSpeedConfig),
-				PlayerEffectType.Flight => new FlyingMovementStrategy(config as PlayerEffectFlightConfig),
+				CollectableEffectType.Run => new WalkingMovementStrategy(config as CollectableEffectRunConfig),
+				CollectableEffectType.Flight => new FlyingMovementStrategy(config as CollectableEffectFlightConfig),
 				// Add more cases for other movement types as needed
 				_ => throw new ArgumentException("Unsupported PlayerEffectType type: " + config.type),
 			};

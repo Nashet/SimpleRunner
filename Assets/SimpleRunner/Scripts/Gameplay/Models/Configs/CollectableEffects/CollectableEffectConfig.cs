@@ -5,7 +5,7 @@ namespace Nashet.SimpleRunner.Configs.PlayerEffects
 {
 
 	[Serializable]
-	public enum PlayerEffectType
+	public enum CollectableEffectType
 	{
 		Run,
 		Flight,
@@ -15,8 +15,8 @@ namespace Nashet.SimpleRunner.Configs.PlayerEffects
 	/// That abstract class provides nessessary fields for all player effects.
 	/// Childs of this class will have additional fields needed for specific effect.
 	/// </summary>
-	public abstract class PlayerEffectBaseConfig : ScriptableObject
+	public abstract class CollectableEffectConfig : ScriptableObject
 	{
-		public PlayerEffectType type;
+		public CollectableEffectType type;
 	}
 }

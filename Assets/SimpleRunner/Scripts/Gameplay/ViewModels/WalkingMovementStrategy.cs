@@ -12,7 +12,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	{
 		private float runSpeed;
 
-		public WalkingMovementStrategy(PlayerEffectSpeedConfig config)
+		public WalkingMovementStrategy(CollectableEffectRunConfig config)
 		{
 			runSpeed = config.speed;
 		}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
-  m_Name: FlyCoinConfig
+  m_Name: SpeedUpCoinConfig
   m_EditorClassIdentifier: 
   effectTime: 10
-  effect: {fileID: 11400000, guid: fd8b57fe92fc71e4792947ade15aa64a, type: 2}
+  effect: {fileID: 11400000, guid: c66c0bd5e23bd2246aa202ee86ececb1, type: 2}

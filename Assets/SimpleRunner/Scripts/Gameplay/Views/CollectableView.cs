@@ -9,7 +9,7 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 	/// </summary>
 	public class CollectablesView : MonoBehaviour, ICollectableView //todo why S?
 	{
-		[SerializeField] private CollidableObjectTypeConfig _playerEffect;
-		public CollidableObjectTypeConfig CollidableObjectType => _playerEffect;
+		[SerializeField] private CollectableObjectTypeConfig _playerEffect;
+		public CollectableObjectTypeConfig CollidableObjectType => _playerEffect;
 	}
 }

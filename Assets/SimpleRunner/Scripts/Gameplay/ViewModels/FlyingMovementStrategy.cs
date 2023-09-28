@@ -10,7 +10,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	{
 		private float flightSpeed;
 		private float height;
-		public FlyingMovementStrategy(PlayerEffectFlightConfig flightConfig)
+		public FlyingMovementStrategy(CollectableEffectFlightConfig flightConfig)
 		{
 			flightSpeed = flightConfig.speed;
 			height = flightConfig.height;

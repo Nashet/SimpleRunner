@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 0}
-  configHolderName: ConfigHolder
+  configHolderName: Configs/ConfigHolder
 --- !u!114 &7410052093089544736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab358de2cd4e71b4bb9b8f3231d0f204, type: 3}
-  m_Name: PlayerEffectSpeedConfigNormal
+  m_Name: CollectableEffectFastRunConfig
   m_EditorClassIdentifier: 
   type: 0
-  speed: 0.1
+  speed: 0.4

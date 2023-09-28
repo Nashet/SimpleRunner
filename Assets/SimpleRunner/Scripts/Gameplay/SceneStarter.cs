@@ -12,17 +12,17 @@ namespace Nashet.SimpleRunner
 	public class SceneStarter : MonoBehaviour
 	{
 		[SerializeField] private PlayerView playerView;
-		[SerializeField] private string configHolderName = "ConfigHolder";
+		[SerializeField] private string configHolderName;
 
-		public WorldViewModel WorldGeneratorVM { get; private set; }
+		public WorldViewModel WorldVM { get; private set; }
 
 		private void Start()
 		{
 			var configService = new SOConfigService(configHolderName);
 
-			WorldGeneratorVM = new WorldViewModel(configService.GetConfig<MapGenerationConfig>());
+			WorldVM = new WorldViewModel(configService.GetConfig<GameplayConfig>());
 
-			WorldGeneratorVM.InitializeWithView(playerView);
+			WorldVM.InitializeWithView(playerView);
 		}
 	}
 }
