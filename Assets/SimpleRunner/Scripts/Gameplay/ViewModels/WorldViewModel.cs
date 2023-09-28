@@ -7,15 +7,12 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// <summary>
 	/// The purpose of this class is to communicate with nested View Models.
 	/// </summary>
-	public class WorldGeneratorViewModel // todo rename it
+	public class WorldViewModel
 	{
 		private PlayerViewModel playerVM;
-		private MapGenerationConfig mapGenerationConfig;
 
-		public WorldGeneratorViewModel(MapGenerationConfig mapGenerationConfig)
+		public WorldViewModel(MapGenerationConfig mapGenerationConfig)
 		{
-			this.mapGenerationConfig = mapGenerationConfig;
-
 			Vector2 playerStartingPosition = new Vector2(0, 0);
 			playerVM = new PlayerViewModel(mapGenerationConfig.defaultPlayerAction, playerStartingPosition);
 		}

@@ -16,7 +16,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			height = flightConfig.height;
 		}
 
-		public void Move(PlayerModel playerModel, float deltaTime)
+		public void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
 			throw new System.NotImplementedException();
 		}

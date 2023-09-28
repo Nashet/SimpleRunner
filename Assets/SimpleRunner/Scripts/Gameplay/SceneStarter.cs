@@ -14,13 +14,13 @@ namespace Nashet.SimpleRunner
 		[SerializeField] private PlayerView playerView;
 		[SerializeField] private string configHolderName = "ConfigHolder";
 
-		public WorldGeneratorViewModel WorldGeneratorVM { get; private set; }
+		public WorldViewModel WorldGeneratorVM { get; private set; }
 
 		private void Start()
 		{
 			var configService = new SOConfigService(configHolderName);
 
-			WorldGeneratorVM = new WorldGeneratorViewModel(configService.GetConfig<MapGenerationConfig>());
+			WorldGeneratorVM = new WorldViewModel(configService.GetConfig<MapGenerationConfig>());
 
 			// disable that method if you want to turn off graphical visualisation of game progress
 			WorldGeneratorVM.InitializeWithView(playerView);

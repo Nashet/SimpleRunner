@@ -11,12 +11,12 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	{
 		public event OnPlayerMovedDelegate OnPlayerMoved;
 
-		private PlayerModel playerModel;
+		private PlayerMovementModel playerModel;
 		private IPlayerMovementStrategy movementStrategy;
 
 		public PlayerViewModel(PlayerEffectBaseConfig defaultAction, Vector2 startingPosition)
 		{
-			playerModel = new PlayerModel(defaultAction, startingPosition);
+			playerModel = new PlayerMovementModel(defaultAction, startingPosition);
 			playerModel.OnPlayerMoved += OnPlayerMovedhandler;
 			ReceiveEffect(defaultAction);
 		}

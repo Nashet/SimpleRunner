@@ -5,7 +5,7 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 {
 	public delegate void OnPlayerMovedDelegate(Vector3 newPosition);
 
-	public class PlayerModel//todo rename it
+	public class PlayerMovementModel
 	{
 		public event OnPlayerMovedDelegate OnPlayerMoved;
 
@@ -22,7 +22,7 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 			}
 		}
 
-		public PlayerModel(PlayerEffectBaseConfig defaultAction, Vector2 startingPosition)
+		public PlayerMovementModel(PlayerEffectBaseConfig defaultAction, Vector2 startingPosition)
 		{
 			this.defaultAction = defaultAction;
 			_position = startingPosition;

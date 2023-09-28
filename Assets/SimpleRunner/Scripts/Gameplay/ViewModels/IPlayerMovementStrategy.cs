@@ -9,6 +9,6 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// </summary>
 	public interface IPlayerMovementStrategy
 	{
-		void Move(PlayerModel playerModel, float deltaTime);
+		void Move(PlayerMovementModel playerModel, float deltaTime);
 	}
 }
