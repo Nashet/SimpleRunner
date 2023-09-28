@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4313555296185259675}
   - component: {fileID: 1773098007465972368}
-  - component: {fileID: 6536990862774838954}
   - component: {fileID: 7410052093089544736}
   m_Layer: 0
   m_Name: SceneStarter
@@ -46,24 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baf551cb762c924db74aaa5633e7f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldGeneratorView: {fileID: 0}
-  playerPrefab: {fileID: 632162345014225599, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
-  objectPool: {fileID: 6536990862774838954}
+  playerView: {fileID: 0}
   configHolderName: ConfigHolder
---- !u!114 &6536990862774838954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3928725191132176821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2d4361ed4ab4548ba12383cb523a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 2852262472759993791, guid: f2f843c91b77d2149953360525de43b9, type: 3}
-  initialPoolSize: 5
 --- !u!114 &7410052093089544736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,3 +60,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneStarter: {fileID: 1773098007465972368}
+  interval: 0.01

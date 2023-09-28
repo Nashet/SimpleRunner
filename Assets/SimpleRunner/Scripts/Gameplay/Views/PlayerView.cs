@@ -19,10 +19,8 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			GameObject coin = other.gameObject;
-			var collectable = coin.GetComponent<CollectablesView>();
-			OnPlayerCollided?.Invoke(collectable.PlayerEffectBaseConfig);
-			Destroy(coin);
+			OnPlayerCollided?.Invoke(other.gameObject);
+			Destroy(other.gameObject);
 		}
 	}
 }

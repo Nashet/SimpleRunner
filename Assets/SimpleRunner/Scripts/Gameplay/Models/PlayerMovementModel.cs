@@ -10,8 +10,6 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 		public event OnPlayerMovedDelegate OnPlayerMoved;
 
 		private Vector3 _position;
-		private PlayerEffectBaseConfig defaultAction;
-
 		public Vector3 Position
 		{
 			get { return _position; }
@@ -22,9 +20,9 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 			}
 		}
 
-		public PlayerMovementModel(PlayerEffectBaseConfig defaultAction, Vector2 startingPosition)
+
+		public PlayerMovementModel(Vector2 startingPosition)
 		{
-			this.defaultAction = defaultAction;
 			_position = startingPosition;
 		}
 	}

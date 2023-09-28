@@ -1,4 +1,4 @@
-using Nashet.SimpleRunner.Configs.PlayerEffects;
+using Nashet.SimpleRunner.Configs;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.Views
@@ -9,7 +9,7 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 	/// </summary>
 	public class CollectablesView : MonoBehaviour, ICollectableView //todo why S?
 	{
-		[SerializeField] private PlayerEffectBaseConfig _playerEffectBaseConfig;
-		public PlayerEffectBaseConfig PlayerEffectBaseConfig => _playerEffectBaseConfig;
+		[SerializeField] private CollidableObjectTypeConfig _playerEffect;
+		public CollidableObjectTypeConfig CollidableObjectType => _playerEffect;
 	}
 }

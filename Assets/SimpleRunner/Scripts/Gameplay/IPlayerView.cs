@@ -1,9 +1,8 @@
-﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay
 {
-	public delegate void OnPlayerCollidedDelegate(PlayerEffectBaseConfig playerEffectBaseConfig);
+	public delegate void OnPlayerCollidedDelegate(GameObject otherObject);
 
 	/// <summary>
 	/// Thats an interface for the player view. 

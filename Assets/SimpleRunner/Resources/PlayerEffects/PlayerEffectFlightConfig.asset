@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f27d421526b4cf48ac7ac485fb23229, type: 3}
   m_Name: PlayerEffectFlightConfig
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   speed: 0.1
   height: 2

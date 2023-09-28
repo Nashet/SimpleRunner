@@ -1,5 +1,4 @@
 ﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
-using System;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Configs

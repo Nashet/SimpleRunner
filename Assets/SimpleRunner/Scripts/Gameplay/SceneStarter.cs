@@ -22,7 +22,6 @@ namespace Nashet.SimpleRunner
 
 			WorldGeneratorVM = new WorldViewModel(configService.GetConfig<MapGenerationConfig>());
 
-			// disable that method if you want to turn off graphical visualisation of game progress
 			WorldGeneratorVM.InitializeWithView(playerView);
 		}
 	}

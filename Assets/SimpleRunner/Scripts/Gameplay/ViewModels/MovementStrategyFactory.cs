@@ -10,6 +10,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public static class MovementStrategyFactory
 	{
 		//todo: might be better to use DI instead of static factory
+		//toso: its possible to caceh strategies and reuse them
 		public static IPlayerMovementStrategy CreateMovementStrategy(PlayerEffectBaseConfig config)
 		{
 			return config.type switch
