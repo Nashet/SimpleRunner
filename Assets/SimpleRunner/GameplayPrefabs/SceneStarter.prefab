@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4313555296185259675}
   - component: {fileID: 1773098007465972368}
   - component: {fileID: 7410052093089544736}
+  - component: {fileID: 4812602466444023994}
   m_Layer: 0
   m_Name: SceneStarter
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerView: {fileID: 0}
   configHolderName: Configs/ConfigHolder
+  cameraView: {fileID: 0}
+  objectPool: {fileID: 4812602466444023994}
 --- !u!114 &7410052093089544736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,3 +64,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneStarter: {fileID: 1773098007465972368}
   interval: 0.01
+--- !u!114 &4812602466444023994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3928725191132176821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8338f520471747b4792dd4c71f31b62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2852262472759993791, guid: f2f843c91b77d2149953360525de43b9, type: 3}
+  initialPoolSize: 0

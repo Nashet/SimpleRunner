@@ -1,4 +1,5 @@
-﻿using Nashet.SimpleRunner.Configs;
+﻿using Assets.SimpleRunner.Patterns;
+using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Gameplay.ViewModels;
 using Nashet.SimpleRunner.Gameplay.Views;
 using Nashet.SimpleRunner.Services;
@@ -14,6 +15,7 @@ namespace Nashet.SimpleRunner
 		[SerializeField] private PlayerView playerView;
 		[SerializeField] private string configHolderName;
 		[SerializeField] private CameraView cameraView;
+		[SerializeField] private GameObjectPool objectPool;
 
 		public WorldViewModel WorldVM { get; private set; }
 
@@ -21,7 +23,8 @@ namespace Nashet.SimpleRunner
 		{
 			var configService = new SOConfigService(configHolderName);
 
-			WorldVM = new WorldViewModel(configService.GetConfig<GameplayConfig>());
+			var gameObjectFactory = new GameObjectPoolFactory(objectPool);
+			WorldVM = new WorldViewModel(configService.GetConfig<GameplayConfig>(), gameObjectFactory);
 
 			WorldVM.InitializeWithView(playerView, cameraView);
 		}

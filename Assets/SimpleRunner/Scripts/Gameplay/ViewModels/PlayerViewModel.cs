@@ -6,7 +6,8 @@ using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
-	public delegate void OnEffectEnded();
+	public delegate void OnEffectEndedDelegate();
+	public delegate void OnCollectedObjectDelegate(GameObject obj);
 
 	/// <summary>
 	/// The only purpose of this class is to be the intermediate between the view and the model of the player.
@@ -14,7 +15,10 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public class PlayerViewModel
 	{
 		public event OnPlayerMovedDelegate OnPlayerMoved;
-		public event OnEffectEnded OnEffectEnded;
+		public event OnEffectEndedDelegate OnEffectEnded;
+		public event OnCollectedObjectDelegate OnCollectedObject;
+
+		public Vector2 Position => playerModel.Position;
 
 		private PlayerMovementModel playerModel;
 
@@ -35,13 +39,13 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private float lastTimeStrategyChanged;
 
-		public PlayerViewModel(CollectableEffectConfig defaultAction, Vector2 startingPosition)
+		public PlayerViewModel(GameplayConfig gameplayConfig)
 		{
-			playerModel = new PlayerMovementModel(startingPosition);
+			defaultAction = gameplayConfig.defaultPlayerAction;
+			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition);
 			playerModel.OnPlayerMoved += OnPlayerMovedhandler;
 
 			SetDefaultAction(defaultAction);
-			this.defaultAction = defaultAction;
 		}
 
 		private void OnPlayerMovedhandler(Vector3 newPosition)
@@ -49,7 +53,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			OnPlayerMoved?.Invoke(newPosition);
 		}
 
-		public void InitializeWithView(IPlayerView playerView, CameraView cameraView)
+		public void InitializeWithView(IPlayerView playerView, ICameraView cameraView)
 		{
 			playerModel.Position = playerView.Position;
 
@@ -61,8 +65,10 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private void OnPlayerCollidedHandler(GameObject other)
 		{
-			GameObject coin = other.gameObject;
-			var collectable = coin.GetComponent<CollectablesView>();
+			var collectable = other.GetComponent<CollectablesView>();
+			if (collectable == null)
+				throw new System.Exception("Collectable is null");
+			OnCollectedObject?.Invoke(other);
 			SetNewAction(collectable.CollidableObjectType);
 		}
 

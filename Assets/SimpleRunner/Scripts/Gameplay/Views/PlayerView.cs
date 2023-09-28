@@ -20,7 +20,6 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 		void OnTriggerEnter2D(Collider2D other)
 		{
 			OnPlayerCollided?.Invoke(other.gameObject);
-			Destroy(other.gameObject);
 		}
 	}
 }
