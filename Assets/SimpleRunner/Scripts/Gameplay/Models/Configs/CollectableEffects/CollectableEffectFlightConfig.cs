@@ -10,5 +10,6 @@ namespace Nashet.SimpleRunner.Configs.PlayerEffects
 	{
 		public float speed;
 		public float height;
+		public float takeofSpeed;
 	}
 }

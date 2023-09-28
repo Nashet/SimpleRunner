@@ -13,8 +13,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		public WorldViewModel(GameplayConfig gameplayConfig)
 		{
-			Vector2 playerStartingPosition = new Vector2(0, 0);
-			playerVM = new PlayerViewModel(gameplayConfig.defaultPlayerAction, playerStartingPosition);
+			playerVM = new PlayerViewModel(gameplayConfig.defaultPlayerAction, gameplayConfig.playerStartingPosition);
 		}
 
 		public void InitializeWithView(IPlayerView playerView)

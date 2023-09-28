@@ -20,7 +20,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		public void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
 			var oldPosition = playerModel.Position;
-			playerModel.Position = new Vector3(oldPosition.x + runSpeed, oldPosition.y, oldPosition.z);
+			playerModel.Position = new Vector3(oldPosition.x + runSpeed, 0, oldPosition.z);
 		}
 	}
 }
