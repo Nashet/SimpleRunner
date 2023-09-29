@@ -20,7 +20,6 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 			}
 		}
 
-
 		public PlayerMovementModel(Vector2 startingPosition)
 		{
 			_position = startingPosition;

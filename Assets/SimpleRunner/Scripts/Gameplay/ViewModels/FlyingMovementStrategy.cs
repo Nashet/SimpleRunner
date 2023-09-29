@@ -10,22 +10,25 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	internal class FlyingMovementStrategy : IPlayerMovementStrategy
 	{
 		private float flightSpeed;
-		private float height;
+		private float maxHeight;
 		private float takeofSpeed;
 		public FlyingMovementStrategy(CollectableEffectFlightConfig flightConfig)
 		{
 			flightSpeed = flightConfig.speed;
-			height = flightConfig.height;
+			maxHeight = flightConfig.height;
 			takeofSpeed = flightConfig.takeofSpeed;
 		}
 
 		public void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
 			var oldPosition = playerModel.Position;
-			if (oldPosition.y < height)
-			{
-				playerModel.Position = new Vector3(oldPosition.x, oldPosition.y + takeofSpeed, oldPosition.z);
-			}
+			float newY = oldPosition.y < maxHeight ? oldPosition.y + takeofSpeed : oldPosition.y;
+			playerModel.Position = new Vector3(oldPosition.x + flightSpeed, newY, oldPosition.z);
+		}
+
+		override public string ToString()
+		{
+			return $"FlyingMovementStrategy {flightSpeed}";
 		}
 	}
 }

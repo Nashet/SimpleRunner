@@ -14,7 +14,6 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 		public void PlayerMovedHandler(Vector3 newPosition)
 		{
 			transform.position = newPosition;
-			Debug.Log("!Player moved to " + transform.position);
 		}
 
 		void OnTriggerEnter2D(Collider2D other)

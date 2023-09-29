@@ -76,7 +76,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		{
 			this.currentAction = newEffect;
 			currentMovementStrategy = MovementStrategyFactory.CreateMovementStrategy(newEffect);
-			Debug.LogError($"new strategy is default {currentMovementStrategy}");
+			Debug.Log($"Applied effect is default ({currentMovementStrategy})");
 		}
 
 		private void SetNewAction(CollectableObjectTypeConfig newEffect)
@@ -84,7 +84,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			this.currentAction = newEffect.effect;
 			currentActionDuration = newEffect.effectTime;
 			currentMovementStrategy = MovementStrategyFactory.CreateMovementStrategy(newEffect.effect);
-			Debug.LogError($"new strategy is {currentMovementStrategy}");
+			Debug.Log($"Applied effect is is {currentMovementStrategy}");
 		}
 
 		public void Update(float deltaTime)
