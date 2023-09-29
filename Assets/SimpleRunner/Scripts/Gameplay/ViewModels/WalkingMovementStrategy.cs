@@ -1,4 +1,5 @@
-﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
+﻿using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Configs.PlayerEffects;
 using Nashet.SimpleRunner.Gameplay.Models;
 using UnityEngine;
 
@@ -11,16 +12,28 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public class WalkingMovementStrategy : IPlayerMovementStrategy
 	{
 		private float runSpeed;
+		private GameplayConfig gameplayConfig;
 
-		public WalkingMovementStrategy(CollectableEffectRunConfig config)
+		public WalkingMovementStrategy(CollectableEffectRunConfig config, GameplayConfig gameplayConfig)
 		{
 			runSpeed = config.speed;
+			this.gameplayConfig = gameplayConfig;
 		}
 
 		public void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
 			var oldPosition = playerModel.Position;
-			playerModel.Position = new Vector3(oldPosition.x + runSpeed, oldPosition.y, oldPosition.z);
+			var newYPosition = oldPosition.y;
+
+			if (oldPosition.y > gameplayConfig.playerStartingPosition.y)
+			{
+				newYPosition = oldPosition.y - runSpeed;
+			}
+			else if (oldPosition.y < gameplayConfig.playerStartingPosition.y)
+			{
+				newYPosition = gameplayConfig.playerStartingPosition.y;
+			}
+			playerModel.Position = new Vector3(oldPosition.x + runSpeed, newYPosition, oldPosition.z);
 		}
 
 		override public string ToString()

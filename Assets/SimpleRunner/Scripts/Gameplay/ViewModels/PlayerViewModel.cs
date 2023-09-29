@@ -25,6 +25,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private CollectableEffectConfig defaultAction;
 		private CollectableEffectConfig currentAction;
 		private float currentActionDuration;
+		private GameplayConfig gameplayConfig;
 
 		private IPlayerMovementStrategy _currentMovementStrategy;
 		private IPlayerMovementStrategy currentMovementStrategy
@@ -41,6 +42,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		public PlayerViewModel(GameplayConfig gameplayConfig)
 		{
+			this.gameplayConfig = gameplayConfig;
 			defaultAction = gameplayConfig.defaultPlayerAction;
 			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition);
 			playerModel.OnPlayerMoved += OnPlayerMovedhandler;
@@ -75,7 +77,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private void SetDefaultAction(CollectableEffectConfig newEffect)
 		{
 			this.currentAction = newEffect;
-			currentMovementStrategy = MovementStrategyFactory.CreateMovementStrategy(newEffect);
+			currentMovementStrategy = MovementStrategyFactory.CreateMovementStrategy(newEffect, gameplayConfig);
 			Debug.Log($"Applied effect is default ({currentMovementStrategy})");
 		}
 
@@ -83,7 +85,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		{
 			this.currentAction = newEffect.effect;
 			currentActionDuration = newEffect.effectTime;
-			currentMovementStrategy = MovementStrategyFactory.CreateMovementStrategy(newEffect.effect);
+			currentMovementStrategy = MovementStrategyFactory.CreateMovementStrategy(newEffect.effect, gameplayConfig);
 			Debug.Log($"Applied effect is is {currentMovementStrategy}");
 		}
 
