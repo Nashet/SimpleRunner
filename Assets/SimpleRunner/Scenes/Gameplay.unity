@@ -136,12 +136,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4826087343312184412, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826087343312184412, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.66
       objectReference: {fileID: 0}
     - target: {fileID: 4826087343312184412, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 4826087343312184412, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -201,19 +205,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 154379129115934636, guid: bcfe155e7f6684d488686375f59bafe7, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.19215688
+      value: 0.8679245
       objectReference: {fileID: 0}
     - target: {fileID: 154379129115934636, guid: bcfe155e7f6684d488686375f59bafe7, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.4745098
+      value: 0.73432803
       objectReference: {fileID: 0}
     - target: {fileID: 154379129115934636, guid: bcfe155e7f6684d488686375f59bafe7, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.32955876
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1039631336461746066, guid: bcfe155e7f6684d488686375f59bafe7, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291673133815891995, guid: bcfe155e7f6684d488686375f59bafe7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2291673133815891995, guid: bcfe155e7f6684d488686375f59bafe7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,6 +300,10 @@ PrefabInstance:
       value: SceneStarter
       objectReference: {fileID: 0}
     - target: {fileID: 4313555296185259675, guid: 7893f4391a4d3624db6fcbd7940ccff2, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313555296185259675, guid: 7893f4391a4d3624db6fcbd7940ccff2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -349,12 +361,16 @@ PrefabInstance:
       value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 5896580073087637293, guid: 9f2d3fe9af37c9547924bdb57d034076, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896580073087637293, guid: 9f2d3fe9af37c9547924bdb57d034076, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5896580073087637293, guid: 9f2d3fe9af37c9547924bdb57d034076, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -115.62
+      value: -118.44
       objectReference: {fileID: 0}
     - target: {fileID: 5896580073087637293, guid: 9f2d3fe9af37c9547924bdb57d034076, type: 3}
       propertyPath: m_LocalPosition.z
@@ -393,11 +409,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f2d3fe9af37c9547924bdb57d034076, type: 3}
---- !u!1660057539 &9223372036854775807
-SceneRoots:
-  m_ObjectHideFlags: 0
-  m_Roots:
-  - {fileID: 2606787974744812550}
-  - {fileID: 3688027286805700431}
-  - {fileID: 1482305246}
-  - {fileID: 5771246395170805296}

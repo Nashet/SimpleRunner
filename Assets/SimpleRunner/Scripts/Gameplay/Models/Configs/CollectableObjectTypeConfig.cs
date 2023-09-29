@@ -10,6 +10,7 @@ namespace Nashet.SimpleRunner.Configs
 	[CreateAssetMenu(fileName = "CollectableObjectTypeConfig", menuName = "SimpleRunner/CollectableObjectTypeConfig")]
 	public class CollectableObjectTypeConfig : ScriptableObject
 	{
+		public Sprite sprite;
 		public float effectTime = 10f;
 		public CollectableEffectConfig effect;
 	}

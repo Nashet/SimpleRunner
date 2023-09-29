@@ -47,6 +47,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			var randomElement = UnityEngine.Random.Range(0, gameplayConfig.collectableObjectTypes.Count);
 
 			collectableView.CollidableObjectType = gameplayConfig.collectableObjectTypes[randomElement];
+			newObject.GetComponent<SpriteRenderer>().sprite = collectableView.CollidableObjectType.sprite;
 		}
 	}
 }
