@@ -1,10 +1,13 @@
-﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.Models
 {
 	public delegate void OnPlayerMovedDelegate(Vector3 newPosition);
 
+	/// <summary>
+	/// That class is a model of MVVM pattern. Its suposed to be used by IPlayerMovementStrategy.
+	/// That purpose to only store data, no logic allowed here.
+	/// </summary>
 	public class PlayerMovementModel
 	{
 		public event OnPlayerMovedDelegate OnPlayerMoved;

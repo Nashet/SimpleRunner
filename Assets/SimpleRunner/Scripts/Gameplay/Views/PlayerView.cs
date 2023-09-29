@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Nashet.SimpleRunner.Gameplay.Views
 {
 	/// <summary>
-	/// The only purpose of this class is to handle visuals of the player and handle collisions.
+	/// The purpose of this class is to handle visuals of the player and handle collisions.
 	/// </summary>
 	public class PlayerView : MonoBehaviour, IPlayerView
 	{

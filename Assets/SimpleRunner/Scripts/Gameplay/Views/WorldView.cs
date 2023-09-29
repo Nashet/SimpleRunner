@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.Views
 {
+	/// <summary>
+	/// Purpose of this class is to generate visuals for background objects
+	/// </summary>
 	public class WorldView : MonoBehaviour, IWorldView
 	{
-		[SerializeField] private int backgroundObjectGenerationSpeed = 9;
-		[SerializeField] private GameObject prefab;
-
 		private GameplayConfig gameplayConfig;
 		private IGameObjectFactory gameObjectFactory;
 		private Queue<GameObject> gameObjects = new();
