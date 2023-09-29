@@ -14,5 +14,9 @@ namespace Nashet.SimpleRunner.Configs
 		public Vector2 playerStartingPosition;
 		public Vector2 coinGenerationPosition;
 		public List<CollectableObjectTypeConfig> collectableObjectTypes;
+		
+		[Header("Between 0 and 1")]
+		public float backgroundObjectGenerationChance;
+		public int maxAmountOfBackgroundObjects;
 	}
 }

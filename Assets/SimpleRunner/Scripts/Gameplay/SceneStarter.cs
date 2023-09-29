@@ -15,7 +15,9 @@ namespace Nashet.SimpleRunner
 		[SerializeField] private PlayerView playerView;
 		[SerializeField] private string configHolderName;
 		[SerializeField] private CameraView cameraView;
-		[SerializeField] private GameObjectPool objectPool;
+		[SerializeField] private GameObjectPool coinObjectPool;
+		[SerializeField] private GameObjectPool backgroundObjectPool;
+		[SerializeField] private WorldView worldView;
 
 		public WorldViewModel WorldVM { get; private set; }
 
@@ -23,10 +25,12 @@ namespace Nashet.SimpleRunner
 		{
 			var configService = new SOConfigService(configHolderName);
 
-			var gameObjectFactory = new GameObjectPoolFactory(objectPool);
-			WorldVM = new WorldViewModel(configService.GetConfig<GameplayConfig>(), gameObjectFactory);
+			var coinObjectFactory = new GameObjectPoolFactory(coinObjectPool);
+			var backgroundObjectFactory = new GameObjectPoolFactory(backgroundObjectPool);
+			var gameplayConfig = configService.GetConfig<GameplayConfig>();
+			WorldVM = new WorldViewModel(gameplayConfig, coinObjectFactory, backgroundObjectFactory);
 
-			WorldVM.InitializeWithView(playerView, cameraView);
+			WorldVM.InitializeWithView(worldView, playerView, cameraView);
 		}
 	}
 }

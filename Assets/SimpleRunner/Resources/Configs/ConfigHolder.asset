@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: ConfigHolder
   m_EditorClassIdentifier: 
   AllConfigs:
-  - {fileID: 11400000, guid: 67f42581c21c5f6499f29fa44eb5f9d1, type: 2}
   - {fileID: 11400000, guid: 5330a3f13daf7804fb34326af21f6d7e, type: 2}
