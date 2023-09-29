@@ -1,6 +1,5 @@
 ﻿using Assets.SimpleRunner.Patterns;
 using Nashet.SimpleRunner.Configs;
-using System;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.Views
 {

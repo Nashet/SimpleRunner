@@ -1,6 +1,5 @@
 ﻿
 using Nashet.SimpleRunner.Configs;
-using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay
 {
