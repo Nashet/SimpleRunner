@@ -7,7 +7,7 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 	/// The only purpose of this class is to handle visuals of the collectable objects
 	/// and to keep connection with the config of that collectbale object.
 	/// </summary>
-	public class CollectablesView : MonoBehaviour, ICollectableView //todo why S?
+	public class CollectableView : MonoBehaviour, ICollectableView
 	{
 		[SerializeField] private CollectableObjectTypeConfig _playerEffect;
 		public CollectableObjectTypeConfig CollidableObjectType

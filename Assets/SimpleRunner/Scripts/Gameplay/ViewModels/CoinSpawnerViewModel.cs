@@ -27,7 +27,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private static Vector2 GetCoinSpawnPosition(PlayerViewModel playerVM, GameplayConfig gameplayConfig)
 		{
-			var playerOfset = new Vector2(playerVM.Position.x, 0); //todo check for immutability
+			var playerOfset = new Vector2(playerVM.Position.x, 0);
 			return playerOfset + gameplayConfig.coinGenerationPosition;
 		}
 

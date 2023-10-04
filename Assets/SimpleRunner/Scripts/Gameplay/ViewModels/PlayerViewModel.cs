@@ -1,7 +1,6 @@
 using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Configs.PlayerEffects;
 using Nashet.SimpleRunner.Gameplay.Models;
-using Nashet.SimpleRunner.Gameplay.Views; // todo renove it
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
@@ -69,7 +68,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private void OnPlayerCollidedHandler(GameObject other)
 		{
-			var collectable = other.GetComponent<CollectablesView>();
+			var collectable = other.GetComponent<ICollectableView>();
 			if (collectable == null)
 				throw new System.Exception("Collectable is null");
 			OnCollectedObject?.Invoke(other);
