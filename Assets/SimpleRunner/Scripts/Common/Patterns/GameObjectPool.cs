@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.SimpleRunner.Patterns
+namespace Assets.SimpleRunner.Common.Patterns
 {
 	/// <summary>
 	/// Simple implementation of object pool pattern

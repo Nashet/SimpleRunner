@@ -1,9 +1,9 @@
-﻿using Assets.SimpleRunner.Patterns;
+﻿using Assets.SimpleRunner.Common.Patterns;
+using Nashet.SimpleRunner.Common.Services;
 using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.ViewModels;
 using Nashet.SimpleRunner.Gameplay.Views;
-using Nashet.SimpleRunner.Services;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner

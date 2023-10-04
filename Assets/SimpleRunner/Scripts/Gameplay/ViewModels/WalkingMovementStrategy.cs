@@ -38,7 +38,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			playerModel.Position = new Vector3(oldPosition.x + runSpeed, newYPosition, oldPosition.z);
 		}
 
-		override public string ToString()
+		public override string ToString()
 		{
 			return $"WalkingMovementStrategy {runSpeed}";
 		}

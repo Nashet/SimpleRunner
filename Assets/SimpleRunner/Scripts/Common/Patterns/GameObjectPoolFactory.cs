@@ -1,7 +1,7 @@
 ﻿using Assets.SimpleRunner.Patterns.Contracts;
 using UnityEngine;
 
-namespace Assets.SimpleRunner.Patterns
+namespace Assets.SimpleRunner.Common.Patterns
 {
 	/// <summary>
 	/// That implementation of IGameObjectFactory uses some implementation of object pool pattern

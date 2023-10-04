@@ -17,7 +17,7 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 			transform.position = newPosition;
 		}
 
-		void OnTriggerEnter2D(Collider2D other)
+		private void OnTriggerEnter2D(Collider2D other)
 		{
 			OnPlayerCollided?.Invoke(other.gameObject);
 		}

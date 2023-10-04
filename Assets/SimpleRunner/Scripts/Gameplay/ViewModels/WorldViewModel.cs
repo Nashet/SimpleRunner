@@ -1,5 +1,5 @@
 ﻿
-using Assets.SimpleRunner.Patterns;
+using Assets.SimpleRunner.Common.Patterns;
 using Assets.SimpleRunner.Patterns.Contracts;
 using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Gameplay.Contracts;
@@ -22,7 +22,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			this.gameplayConfig = gameplayConfig;
 			this.backgroundObjectFactory = backgroundObjectFactory;
 			playerVM = new PlayerViewModel(gameplayConfig, movementStrategyFactory);
-			var coinSpawnerVM = new CoinSpawnerViewModel(playerVM, gameplayConfig, gameObjectFactory);
+			new CoinSpawnerViewModel(playerVM, gameplayConfig, gameObjectFactory);
 		}
 
 		public void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView)
