@@ -1,5 +1,4 @@
 using Nashet.SimpleRunner.Configs;
-using Nashet.SimpleRunner.Configs.PlayerEffects;
 using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.Models;
 using UnityEngine;
@@ -18,41 +17,35 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		public event OnEffectEndedDelegate OnEffectEnded;
 		public event OnCollectedObjectDelegate OnCollectedObject;
 
-		public Vector2 Position => playerModel.Position;
 
+		private GameplayConfig gameplayConfig;
+		public Vector2 Position => playerModel.Position;
 		private PlayerMovementModel playerModel;
 
-		private CollectableEffectConfig defaultAction;
-		private CollectableEffectConfig currentAction;
-		private float currentActionDuration;
-		private IMovementStrategyFactory movementStrategyFactory;
-		private GameplayConfig gameplayConfig;
-
-		private IPlayerMovementStrategy _currentMovementStrategy;
-		private IPlayerMovementStrategy currentMovementStrategy
-		{
-			set
-			{
-				_currentMovementStrategy = value;
-				lastTimeStrategyChanged = Time.time;
-			}
-			get => _currentMovementStrategy;
-		}
-
-		private float lastTimeStrategyChanged;
+		private PlayerMovementContext playerMovementContext;
+		private IMovementStrategyFactory movementStateFactory;
+		private IPlayerMovementStrategy defaultMovementSate;
 
 		public PlayerViewModel(GameplayConfig gameplayConfig, IMovementStrategyFactory movementStrategyFactory)
 		{
-			this.movementStrategyFactory = movementStrategyFactory;
 			this.gameplayConfig = gameplayConfig;
-			defaultAction = gameplayConfig.defaultPlayerAction;
-			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition);
-			playerModel.OnPlayerMoved += OnPlayerMovedhandler;
+			this.movementStateFactory = movementStrategyFactory;
 
-			SetDefaultAction(defaultAction);
+			defaultMovementSate = movementStrategyFactory.CreateMovementStrategy(gameplayConfig.defaultPlayerAction, gameplayConfig);
+			this.playerMovementContext = new PlayerMovementContext(defaultMovementSate);
+			playerMovementContext.OnStateChanged += OnMovementStateChangedHandler;
+
+			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition);
+			playerModel.OnPlayerMoved += OnPlayerMovedHandler;
 		}
 
-		private void OnPlayerMovedhandler(Vector3 newPosition)
+		private void OnMovementStateChangedHandler(IPlayerMovementStrategy newState)
+		{
+			if (newState == defaultMovementSate)
+				OnEffectEnded?.Invoke();
+		}
+
+		private void OnPlayerMovedHandler(Vector3 newPosition)
 		{
 			OnPlayerMoved?.Invoke(newPosition);
 		}
@@ -69,36 +62,21 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private void OnPlayerCollidedHandler(GameObject other)
 		{
-			var collectable = other.GetComponent<ICollectableView>();
-			if (collectable == null)
+			if (!other.TryGetComponent<ICollectableView>(out var collectable))
 				throw new System.Exception("Collectable is null");
 			OnCollectedObject?.Invoke(other);
-			SetNewAction(collectable.CollidableObjectType);
+			SetNewMovementState(collectable.CollidableObjectType);
 		}
 
-		private void SetDefaultAction(CollectableEffectConfig newEffect)
+		private void SetNewMovementState(CollectableObjectTypeConfig newEffect)
 		{
-			this.currentAction = newEffect;
-			currentMovementStrategy = movementStrategyFactory.CreateMovementStrategy(newEffect, gameplayConfig);
-			Debug.Log($"Applied effect is default ({currentMovementStrategy})");
-		}
-
-		private void SetNewAction(CollectableObjectTypeConfig newEffect)
-		{
-			this.currentAction = newEffect.effect;
-			currentActionDuration = newEffect.effectTime;
-			currentMovementStrategy = movementStrategyFactory.CreateMovementStrategy(newEffect.effect, gameplayConfig);
-			Debug.Log($"Applied effect is is {currentMovementStrategy}");
+			var currentMovementStrategy = movementStateFactory.CreateMovementStrategy(newEffect, gameplayConfig);
+			playerMovementContext.ChangeStateTo(currentMovementStrategy);
 		}
 
 		public void Update(float deltaTime)
 		{
-			if (currentAction != defaultAction && Time.time - lastTimeStrategyChanged > currentActionDuration)
-			{
-				SetDefaultAction(defaultAction);
-				OnEffectEnded?.Invoke();
-			}
-			currentMovementStrategy.Move(playerModel, deltaTime);
+			playerMovementContext.Move(playerModel, deltaTime);
 		}
 	}
 }

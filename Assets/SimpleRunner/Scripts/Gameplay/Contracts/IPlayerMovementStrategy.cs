@@ -1,4 +1,5 @@
 ﻿using Nashet.SimpleRunner.Gameplay.Models;
+using Nashet.SimpleRunner.Gameplay.ViewModels;
 
 namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
@@ -10,5 +11,7 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 	public interface IPlayerMovementStrategy
 	{
 		void Move(PlayerMovementModel playerModel, float deltaTime);
+		void SetContext(PlayerMovementContext context);
+		float CurrentActionDuration { get; }
 	}
 }

@@ -1,5 +1,4 @@
-﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Configs
@@ -10,7 +9,7 @@ namespace Nashet.SimpleRunner.Configs
 	[CreateAssetMenu(fileName = "GameplayConfig", menuName = "SimpleRunner/GameplayConfig")]
 	public class GameplayConfig : ScriptableObject
 	{
-		public CollectableEffectConfig defaultPlayerAction;
+		public CollectableObjectTypeConfig defaultPlayerAction;
 		public Vector2 playerStartingPosition;
 		public Vector2 coinGenerationPosition;
 		public List<CollectableObjectTypeConfig> collectableObjectTypes;

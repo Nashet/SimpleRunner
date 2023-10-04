@@ -1,5 +1,5 @@
-﻿using Nashet.SimpleRunner.Configs.PlayerEffects;
-using Nashet.SimpleRunner.Gameplay.Contracts;
+﻿using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Configs.PlayerEffects;
 using Nashet.SimpleRunner.Gameplay.Models;
 using UnityEngine;
 
@@ -8,19 +8,20 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// <summary>
 	/// Thats an implementation of the player movement strategy pattern for the flying effect.
 	/// </summary>
-	internal class FlyingMovementStrategy : IPlayerMovementStrategy
+	internal class FlyingMovementStrategy : PlayerMovementState
 	{
 		private float flightSpeed;
 		private float maxHeight;
 		private float takeofSpeed;
-		public FlyingMovementStrategy(CollectableEffectFlightConfig flightConfig)
+		public FlyingMovementStrategy(CollectableObjectTypeConfig flightConfig) : base(flightConfig.effectTime)
 		{
-			flightSpeed = flightConfig.speed;
-			maxHeight = flightConfig.height;
-			takeofSpeed = flightConfig.takeofSpeed;
+			var config = flightConfig.effect as CollectableEffectFlightConfig;
+			flightSpeed = config.speed;
+			maxHeight = config.height;
+			takeofSpeed = config.takeofSpeed;
 		}
 
-		public void Move(PlayerMovementModel playerModel, float deltaTime)
+		public override void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
 			var oldPosition = playerModel.Position;
 			float newY = oldPosition.y < maxHeight ? oldPosition.y + takeofSpeed : oldPosition.y;

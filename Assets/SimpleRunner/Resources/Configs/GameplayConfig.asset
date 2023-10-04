@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcbb30af9073464c93d665ac04d1c21, type: 3}
   m_Name: GameplayConfig
   m_EditorClassIdentifier: 
-  defaultPlayerAction: {fileID: 11400000, guid: fa5b63dcd24fb5b4789183d5d395e438, type: 2}
+  defaultPlayerAction: {fileID: 11400000, guid: bdae1c2c868202448bc0f4f096f1cf1a, type: 2}
   playerStartingPosition: {x: 0, y: -2.6}
   coinGenerationPosition: {x: 20, y: -2.5}
   collectableObjectTypes:

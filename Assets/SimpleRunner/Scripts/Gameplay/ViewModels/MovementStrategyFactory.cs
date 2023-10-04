@@ -12,14 +12,14 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public class MovementStrategyFactory : IMovementStrategyFactory
 	{
 		//toso: its possible to cache strategies and reuse them
-		public IPlayerMovementStrategy CreateMovementStrategy(CollectableEffectConfig config, GameplayConfig gameplayConfig)
+		public IPlayerMovementStrategy CreateMovementStrategy(CollectableObjectTypeConfig config, GameplayConfig gameplayConfig)
 		{
-			return config.type switch
+			return config.effect.type switch
 			{
-				CollectableEffectType.Run => new WalkingMovementStrategy(config as CollectableEffectRunConfig, gameplayConfig),
-				CollectableEffectType.Flight => new FlyingMovementStrategy(config as CollectableEffectFlightConfig),
+				CollectableEffectType.Run => new WalkingMovementStrategy(config, gameplayConfig),
+				CollectableEffectType.Flight => new FlyingMovementStrategy(config),
 				// Add more cases for other movement types as needed
-				_ => throw new ArgumentException("Unsupported PlayerEffectType type: " + config.type),
+				_ => throw new ArgumentException("Unsupported PlayerEffectType type: " + config.effect.type),
 			};
 		}
 	}
