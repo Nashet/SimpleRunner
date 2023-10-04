@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.SimpleRunner.Patterns.Contracts;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.SimpleRunner.Patterns

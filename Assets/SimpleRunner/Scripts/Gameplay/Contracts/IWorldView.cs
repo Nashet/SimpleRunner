@@ -1,4 +1,4 @@
-﻿using Assets.SimpleRunner.Patterns;
+﻿using Assets.SimpleRunner.Patterns.Contracts;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.Contracts

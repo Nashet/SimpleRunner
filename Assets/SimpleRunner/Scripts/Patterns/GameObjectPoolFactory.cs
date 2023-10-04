@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.SimpleRunner.Patterns.Contracts;
+using UnityEngine;
 
 namespace Assets.SimpleRunner.Patterns
 {
