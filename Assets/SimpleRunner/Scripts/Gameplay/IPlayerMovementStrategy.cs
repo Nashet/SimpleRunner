@@ -1,6 +1,6 @@
 ﻿using Nashet.SimpleRunner.Gameplay.Models;
 
-namespace Nashet.SimpleRunner.Gameplay.ViewModels
+namespace Nashet.SimpleRunner.Gameplay
 {
 	/// <summary>
 	/// Strategy pattern for the player movement.

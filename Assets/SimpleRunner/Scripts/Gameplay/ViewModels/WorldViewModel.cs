@@ -18,11 +18,11 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private GameplayConfig gameplayConfig;
 		private IGameObjectFactory backgroundObjectFactory;
 
-		public WorldViewModel(GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory, GameObjectPoolFactory backgroundObjectFactory)
+		public WorldViewModel(GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory, GameObjectPoolFactory backgroundObjectFactory, IMovementStrategyFactory movementStrategyFactory)
 		{
 			this.gameplayConfig = gameplayConfig;
 			this.backgroundObjectFactory = backgroundObjectFactory;
-			playerVM = new PlayerViewModel(gameplayConfig);
+			playerVM = new PlayerViewModel(gameplayConfig, movementStrategyFactory);
 			coinSpawnerVM = new CoinSpawnerViewModel(playerVM, gameplayConfig, gameObjectFactory);
 		}
 

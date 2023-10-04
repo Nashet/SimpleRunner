@@ -28,7 +28,8 @@ namespace Nashet.SimpleRunner
 			var coinObjectFactory = new GameObjectPoolFactory(coinObjectPool);
 			var backgroundObjectFactory = new GameObjectPoolFactory(backgroundObjectPool);
 			var gameplayConfig = configService.GetConfig<GameplayConfig>();
-			WorldVM = new WorldViewModel(gameplayConfig, coinObjectFactory, backgroundObjectFactory);
+			MovementStrategyFactory movementStrategyFactory = new();
+			WorldVM = new WorldViewModel(gameplayConfig, coinObjectFactory, backgroundObjectFactory, movementStrategyFactory);
 
 			WorldVM.InitializeWithView(worldView, playerView, cameraView);
 		}

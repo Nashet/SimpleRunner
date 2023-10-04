@@ -8,11 +8,10 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// Factory for creating movement strategies for player effects.
 	/// Add more cases for other movement types as needed
 	/// </summary>
-	public static class MovementStrategyFactory
+	public class MovementStrategyFactory : IMovementStrategyFactory
 	{
-		//todo: might be better to use DI instead of static factory
 		//toso: its possible to cache strategies and reuse them
-		public static IPlayerMovementStrategy CreateMovementStrategy(CollectableEffectConfig config, GameplayConfig gameplayConfig)
+		public IPlayerMovementStrategy CreateMovementStrategy(CollectableEffectConfig config, GameplayConfig gameplayConfig)
 		{
 			return config.type switch
 			{
