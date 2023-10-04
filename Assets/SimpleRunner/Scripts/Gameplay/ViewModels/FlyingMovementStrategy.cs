@@ -8,11 +8,12 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// <summary>
 	/// Thats an implementation of the player movement strategy pattern for the flying effect.
 	/// </summary>
-	internal class FlyingMovementStrategy : PlayerMovementState
+	public class FlyingMovementStrategy : PlayerMovementState
 	{
 		private float flightSpeed;
 		private float maxHeight;
 		private float takeofSpeed;
+
 		public FlyingMovementStrategy(CollectableObjectTypeConfig flightConfig) : base(flightConfig.effectTime)
 		{
 			var config = flightConfig.effect as CollectableEffectFlightConfig;

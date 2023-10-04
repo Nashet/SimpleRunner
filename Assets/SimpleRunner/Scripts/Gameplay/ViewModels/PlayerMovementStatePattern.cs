@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
-	public delegate void StateChangedDelegate(IPlayerMovementStrategy newState);
 	/// <summary>
 	/// State pattern
 	/// </summary>
-	public class PlayerMovementContext
+	public class PlayerMovementStatePattern : IPlayerMovementStatePattern
 	{
 		public event StateChangedDelegate OnStateChanged;
 		// A reference to the current state of the Context.
@@ -17,7 +16,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private IPlayerMovementStrategy state = null;
 		private float lastTimeStrategyChanged;
 
-		public PlayerMovementContext(IPlayerMovementStrategy state)
+		public PlayerMovementStatePattern(IPlayerMovementStrategy state)
 		{
 			defaultState = state;
 			this.ChangeStateTo(state);

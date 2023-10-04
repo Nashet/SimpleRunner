@@ -5,13 +5,10 @@ using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
-	public delegate void OnEffectEndedDelegate();
-	public delegate void OnCollectedObjectDelegate(GameObject obj);
-
 	/// <summary>
 	/// The only purpose of this class is to be the intermediate between the view and the model of the player.
 	/// </summary>
-	public class PlayerViewModel
+	public class PlayerViewModel : IPlayerViewModel
 	{
 		public event OnPlayerMovedDelegate OnPlayerMoved;
 		public event OnEffectEndedDelegate OnEffectEnded;
@@ -22,7 +19,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		public Vector2 Position => playerModel.Position;
 		private PlayerMovementModel playerModel;
 
-		private PlayerMovementContext playerMovementContext;
+		private IPlayerMovementStatePattern playerMovementContext;
 		private IMovementStrategyFactory movementStateFactory;
 		private IPlayerMovementStrategy defaultMovementSate;
 
@@ -32,7 +29,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			this.movementStateFactory = movementStrategyFactory;
 
 			defaultMovementSate = movementStrategyFactory.CreateMovementStrategy(gameplayConfig.defaultPlayerAction, gameplayConfig);
-			this.playerMovementContext = new PlayerMovementContext(defaultMovementSate);
+			this.playerMovementContext = new PlayerMovementStatePattern(defaultMovementSate);
 			playerMovementContext.OnStateChanged += OnMovementStateChangedHandler;
 
 			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition);

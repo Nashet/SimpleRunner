@@ -9,7 +9,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	// transition the Context to another State.
 	public abstract class PlayerMovementState : IPlayerMovementStrategy
 	{
-		protected PlayerMovementContext _context;
+		protected IPlayerMovementStatePattern _context;
 		private float _currentActionDuration;
 
 		protected PlayerMovementState(float currentActionDuration)
@@ -19,7 +19,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		public float CurrentActionDuration => _currentActionDuration;
 
-		public void SetContext(PlayerMovementContext context)
+		public void SetContext(IPlayerMovementStatePattern context)
 		{
 			this._context = context;
 		}

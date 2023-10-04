@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
-	public class CoinSpawnerViewModel
+	public class CoinSpawnerViewModel : ICoinSpawnerViewModel
 	{
-		private PlayerViewModel playerVM;
+		private IPlayerViewModel playerVM;
 		private GameplayConfig gameplayConfig;
 		private IGameObjectFactory gameObjectFactory;
 
-		public CoinSpawnerViewModel(PlayerViewModel playerVM, GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory)
+		public CoinSpawnerViewModel(IPlayerViewModel playerVM, GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory)
 		{
 			this.gameObjectFactory = gameObjectFactory;
 			this.gameplayConfig = gameplayConfig;
@@ -26,7 +26,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			gameObjectFactory.DestroyObject(obj);
 		}
 
-		private static Vector2 GetCoinSpawnPosition(PlayerViewModel playerVM, GameplayConfig gameplayConfig)
+		private static Vector2 GetCoinSpawnPosition(IPlayerViewModel playerVM, GameplayConfig gameplayConfig)
 		{
 			var playerOfset = new Vector2(playerVM.Position.x, 0);
 			return playerOfset + gameplayConfig.coinGenerationPosition;

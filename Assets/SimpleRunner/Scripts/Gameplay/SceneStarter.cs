@@ -1,5 +1,6 @@
 ﻿using Assets.SimpleRunner.Patterns;
 using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.ViewModels;
 using Nashet.SimpleRunner.Gameplay.Views;
 using Nashet.SimpleRunner.Services;
@@ -19,7 +20,7 @@ namespace Nashet.SimpleRunner
 		[SerializeField] private GameObjectPool backgroundObjectPool;
 		[SerializeField] private WorldView worldView;
 
-		public WorldViewModel WorldVM { get; private set; }
+		public IWorldViewModel WorldVM { get; private set; }
 
 		private void Start()
 		{
