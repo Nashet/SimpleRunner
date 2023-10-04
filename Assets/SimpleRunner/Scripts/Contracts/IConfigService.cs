@@ -1,4 +1,4 @@
-﻿namespace Nashet.SimpleRunner.Services
+﻿namespace Nashet.SimpleRunner.Contracts
 {
 	/// <summary>
 	/// Purpose of this service is to provide access to the configs.

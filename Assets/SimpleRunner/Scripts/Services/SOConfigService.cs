@@ -1,4 +1,5 @@
 ﻿using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Contracts;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

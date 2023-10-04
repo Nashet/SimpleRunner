@@ -1,4 +1,4 @@
-﻿namespace Nashet.SimpleRunner.Services
+﻿namespace Nashet.SimpleRunner.Contracts
 {
 	/// <summary>
 	/// The only purpose of this interface is to mark a service.
