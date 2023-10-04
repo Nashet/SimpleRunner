@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Nashet.SimpleRunner.Gameplay
+namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
 	public delegate void OnPlayerCollidedDelegate(GameObject otherObject);
 

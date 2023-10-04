@@ -1,7 +1,7 @@
 ﻿using Assets.SimpleRunner.Patterns;
 using UnityEngine;
 
-namespace Nashet.SimpleRunner.Gameplay
+namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
 	public interface IWorldView
 	{

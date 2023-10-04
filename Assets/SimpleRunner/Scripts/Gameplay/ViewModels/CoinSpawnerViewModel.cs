@@ -1,5 +1,6 @@
 ﻿using Assets.SimpleRunner.Patterns;
 using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Gameplay.Contracts;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
@@ -43,7 +44,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			newObject.SetActive(true);
 			var collectableView = newObject.GetComponent<ICollectableView>();
 
-			var randomElement = UnityEngine.Random.Range(0, gameplayConfig.collectableObjectTypes.Count);
+			var randomElement = UnityEngine.Random.Range(0, gameplayConfig.collectableObjectTypes.Count); //todo inject Random
 
 			collectableView.CollidableObjectType = gameplayConfig.collectableObjectTypes[randomElement];
 			newObject.GetComponent<SpriteRenderer>().sprite = collectableView.CollidableObjectType.sprite;

@@ -1,5 +1,6 @@
 using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Configs.PlayerEffects;
+using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.Models;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 ﻿
 using Nashet.SimpleRunner.Configs;
 
-namespace Nashet.SimpleRunner.Gameplay
+namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
 	/// <summary>
 	/// Thats an interface to a view of collectable object.
