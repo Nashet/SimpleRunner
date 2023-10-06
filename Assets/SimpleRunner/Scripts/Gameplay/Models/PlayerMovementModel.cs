@@ -13,6 +13,7 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 		public event OnPlayerMovedDelegate OnPlayerMoved;
 
 		public Rigidbody2D Rb { get; private set; }
+		public float Direction;
 
 		private Vector3 _position;
 

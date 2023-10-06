@@ -8,12 +8,16 @@ namespace Nashet.SimpleRunner.Gameplay.InputView
 	/// </summary>
 	public class PlayerInput : MonoBehaviour, IPlayerInput
 	{
-		public event MouseClicked OnMouseClicked;
+		public event ControlGivenDelegate OnContolGiven;
 
 		private void Update()
 		{
-			if (Input.GetMouseButtonUp(0))
-				OnMouseClicked?.Invoke();
+			if (Input.anyKeyDown)
+			{
+				float horizontalInput = Input.GetAxis("Horizontal");
+				float verticalInput = Input.GetAxis("Vertical");
+				OnContolGiven?.Invoke(horizontalInput, verticalInput);
+			}
 		}
 	}
 }

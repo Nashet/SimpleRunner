@@ -22,7 +22,8 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			var mustLand = Time.time - context.lastTimeStrategyChanged > EffectDuration - config.timeToLand;
 			//if (mustLand)
 			//	Debug.Log($"Must land");
-			playerModel.Rb.velocity = new Vector3(config.speed, mustLand ? 0 : config.takeofSpeed, 0);
+			var convertedDirection = playerModel.Direction >= 0 ? 1 : -1;
+			playerModel.Rb.velocity = new Vector3(config.speed * convertedDirection, mustLand ? 0 : config.takeofSpeed, 0);
 			if (playerModel.Rb.position.y > config.height)
 			{
 				playerModel.Rb.position = new Vector2(playerModel.Rb.position.x, config.height);

@@ -1,8 +1,9 @@
 ﻿namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
-	public delegate void MouseClicked();
+	public delegate void ControlGivenDelegate(float horizontalInput, float verticalInput);
+
 	public interface IPlayerInput
 	{
-		event MouseClicked OnMouseClicked;
+		event ControlGivenDelegate OnContolGiven;
 	}
 }

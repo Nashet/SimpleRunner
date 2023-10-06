@@ -57,12 +57,18 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 			OnPlayerMoved += playerView.PlayerMovedHandler;
 			OnPlayerMoved += cameraView.PlayerMovedHandler;
-			playerInput.OnMouseClicked += MouseClickedHandler;
+			playerInput.OnContolGiven += ControlGivenHandler;
 		}
 
-		private void MouseClickedHandler()
+		private void ControlGivenHandler(float horizontalInput, float verticalInput)
 		{
-			playerMovementContext.ChangeStateTo(jumpMovementSate);
+			if (verticalInput > 0)
+				playerMovementContext.ChangeStateTo(jumpMovementSate);
+
+			if (horizontalInput != 0)
+			{
+				playerModel.Direction = horizontalInput;
+			}
 		}
 
 		private void OnPlayerCollidedHandler(GameObject other)

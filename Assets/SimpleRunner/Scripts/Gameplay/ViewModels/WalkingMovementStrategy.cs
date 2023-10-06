@@ -19,7 +19,9 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		public override void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
-			playerModel.Rb.velocity = new Vector3(config.speed, 0, 0);
+			var convertedDirection = playerModel.Direction >= 0 ? 1 : -1;
+
+			playerModel.Rb.velocity = new Vector3(config.speed * convertedDirection, 0, 0);
 			playerModel.Position = playerModel.Rb.position;
 		}
 
