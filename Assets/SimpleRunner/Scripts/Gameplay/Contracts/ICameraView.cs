@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
 
 namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
-	public interface ICameraView
+	public interface ICameraView : ISubscriber<IPlayerViewModel>
 	{
-		void PlayerMovedHandler(Vector3 newPosition);
 	}
 }

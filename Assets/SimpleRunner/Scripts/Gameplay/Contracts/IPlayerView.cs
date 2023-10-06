@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
+using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
@@ -7,11 +8,10 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 	/// <summary>
 	/// Thats an interface for the player view. 
 	/// </summary>
-	public interface IPlayerView
+	public interface IPlayerView : ISubscriber<IPlayerViewModel>
 	{
 		Vector3 Position { get; }
 
 		event OnPlayerCollidedDelegate OnPlayerCollided;
-		void PlayerMovedHandler(Vector3 newPosition);
 	}
 }

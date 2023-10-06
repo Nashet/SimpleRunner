@@ -1,4 +1,5 @@
 using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Contracts.Patterns;
 using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.Models;
 using UnityEngine;
@@ -10,14 +11,16 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// </summary>
 	public class PlayerViewModel : IPlayerViewModel
 	{
-		public event OnPlayerMovedDelegate OnPlayerMoved;
 		public event OnEffectEndedDelegate OnEffectEnded;
 		public event OnCollectedObjectDelegate OnCollectedObject;
-
+		public event PropertyChangedEventHandler<IPlayerViewModel> OnPropertyChanged;
 
 		private GameplayConfig gameplayConfig;
-		public Vector2 Position => playerModel.Position;
 		private PlayerMovementModel playerModel;
+
+		public Vector2 Position => playerModel.Position;
+		public float Direction => playerModel.Direction;
+
 
 		private IPlayerMovementStatePattern playerMovementContext;
 		private IPlayerMovementStrategy defaultMovementSate;
@@ -47,17 +50,17 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private void OnPlayerMovedHandler(Vector3 newPosition)
 		{
-			OnPlayerMoved?.Invoke(newPosition);
+			OnPropertyChanged?.Invoke(this, nameof(Position));
 		}
 
 		public void InitializeWithView(IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput)
 		{
 			playerModel.Position = playerView.Position;
 			playerView.OnPlayerCollided += OnPlayerCollidedHandler;
-
-			OnPlayerMoved += playerView.PlayerMovedHandler;
-			OnPlayerMoved += cameraView.PlayerMovedHandler;
 			playerInput.OnContolGiven += ControlGivenHandler;
+
+			OnPropertyChanged += playerView.PropertyChangedHandler;
+			OnPropertyChanged += cameraView.PropertyChangedHandler;
 		}
 
 		private void ControlGivenHandler(float horizontalInput, float verticalInput)
@@ -68,6 +71,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			if (horizontalInput != 0)
 			{
 				playerModel.Direction = horizontalInput;
+				OnPropertyChanged?.Invoke(this, nameof(Direction));
 			}
 		}
 
