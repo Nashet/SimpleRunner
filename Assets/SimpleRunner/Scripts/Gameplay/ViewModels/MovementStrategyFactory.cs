@@ -16,7 +16,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		{
 			return config.effect.type switch
 			{
-				CollectableEffectType.Run => new WalkingMovementStrategy(config, gameplayConfig),
+				CollectableEffectType.Run => new WalkingMovementStrategy(config),
 				CollectableEffectType.Flight => new FlyingMovementStrategy(config),
 				// Add more cases for other movement types as needed
 				_ => throw new ArgumentException("Unsupported PlayerEffectType type: " + config.effect.type),

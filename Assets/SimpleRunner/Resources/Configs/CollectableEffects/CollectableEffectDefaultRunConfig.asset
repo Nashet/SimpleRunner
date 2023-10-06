@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CollectableEffectDefaultRunConfig
   m_EditorClassIdentifier: 
   type: 0
-  speed: 0.2
+  speed: 6

@@ -12,7 +12,10 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 	{
 		public event OnPlayerMovedDelegate OnPlayerMoved;
 
+		public Rigidbody2D Rb { get; private set; }
+
 		private Vector3 _position;
+
 		public Vector3 Position
 		{
 			get { return _position; }
@@ -23,9 +26,10 @@ namespace Nashet.SimpleRunner.Gameplay.Models
 			}
 		}
 
-		public PlayerMovementModel(Vector2 startingPosition)
+		public PlayerMovementModel(Vector2 startingPosition, Rigidbody2D rb)
 		{
 			_position = startingPosition;
+			this.Rb = rb;
 		}
 	}
 }

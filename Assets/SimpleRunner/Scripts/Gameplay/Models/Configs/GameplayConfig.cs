@@ -10,6 +10,7 @@ namespace Nashet.SimpleRunner.Configs
 	public class GameplayConfig : ScriptableObject
 	{
 		public CollectableObjectTypeConfig defaultPlayerAction;
+		public CollectableObjectTypeConfig playerJumpAction;
 		public Vector2 playerStartingPosition;
 		public Vector2 coinGenerationPosition;
 		public List<CollectableObjectTypeConfig> collectableObjectTypes;

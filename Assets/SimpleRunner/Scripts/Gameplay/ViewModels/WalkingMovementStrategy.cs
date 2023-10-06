@@ -10,37 +10,22 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// Walking speed is set in the config, it might be positive or negative
 	/// </summary>
 	public class WalkingMovementStrategy : PlayerMovementState
-
 	{
-		private float runSpeed;
-		private GameplayConfig gameplayConfig;
-
-		public WalkingMovementStrategy(CollectableObjectTypeConfig config, GameplayConfig gameplayConfig) : base(config.effectTime)
+		private CollectableEffectRunConfig config;
+		public WalkingMovementStrategy(CollectableObjectTypeConfig config) : base(config)
 		{
-			var walkingConfig = config.effect as CollectableEffectRunConfig;
-			runSpeed = walkingConfig.speed;
-			this.gameplayConfig = gameplayConfig;
+			this.config = config.effect as CollectableEffectRunConfig;
 		}
 
 		public override void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
-			var oldPosition = playerModel.Position;
-			var newYPosition = oldPosition.y;
-
-			if (oldPosition.y > gameplayConfig.playerStartingPosition.y)
-			{
-				newYPosition = oldPosition.y - runSpeed;
-			}
-			else if (oldPosition.y < gameplayConfig.playerStartingPosition.y)
-			{
-				newYPosition = gameplayConfig.playerStartingPosition.y;
-			}
-			playerModel.Position = new Vector3(oldPosition.x + runSpeed, newYPosition, oldPosition.z);
+			playerModel.Rb.velocity = new Vector3(config.speed, 0, 0);
+			playerModel.Position = playerModel.Rb.position;
 		}
 
 		public override string ToString()
 		{
-			return $"WalkingMovementStrategy {runSpeed}";
+			return $"WalkingMovementStrategy {config.speed}";
 		}
 	}
 }

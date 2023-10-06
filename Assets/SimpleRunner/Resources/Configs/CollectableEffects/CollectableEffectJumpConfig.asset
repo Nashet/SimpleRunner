@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab358de2cd4e71b4bb9b8f3231d0f204, type: 3}
-  m_Name: CollectableEffectFastRunConfig
+  m_Script: {fileID: 11500000, guid: 4f27d421526b4cf48ac7ac485fb23229, type: 3}
+  m_Name: CollectableEffectJumpConfig
   m_EditorClassIdentifier: 
-  type: 0
-  speed: 12
+  type: 1
+  speed: 6
+  height: 4
+  takeofSpeed: 10
+  timeToLand: 0.4

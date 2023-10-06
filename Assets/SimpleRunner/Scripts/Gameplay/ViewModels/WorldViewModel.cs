@@ -1,8 +1,8 @@
-﻿
-using Assets.SimpleRunner.Common.Patterns;
+﻿using Assets.SimpleRunner.Common.Patterns;
 using Assets.SimpleRunner.Patterns.Contracts;
 using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Gameplay.Contracts;
+using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
@@ -17,17 +17,18 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private GameplayConfig gameplayConfig;
 		private IGameObjectFactory backgroundObjectFactory;
 
-		public WorldViewModel(GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory, GameObjectPoolFactory backgroundObjectFactory, IMovementStrategyFactory movementStrategyFactory)
+		public WorldViewModel(GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory,
+			GameObjectPoolFactory backgroundObjectFactory, IMovementStrategyFactory movementStrategyFactory, Rigidbody2D rigidbody2D)
 		{
 			this.gameplayConfig = gameplayConfig;
 			this.backgroundObjectFactory = backgroundObjectFactory;
-			playerVM = new PlayerViewModel(gameplayConfig, movementStrategyFactory);
+			playerVM = new PlayerViewModel(gameplayConfig, movementStrategyFactory, rigidbody2D);
 			new CoinSpawnerViewModel(playerVM, gameplayConfig, gameObjectFactory);
 		}
 
-		public void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView)
+		public void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput)
 		{
-			playerVM.InitializeWithView(playerView, cameraView);
+			playerVM.InitializeWithView(playerView, cameraView, playerInput);
 			OnUpdateHappened += worldView.UpdateHappenedHandler;
 			worldView.Initialize(gameplayConfig, backgroundObjectFactory);
 		}

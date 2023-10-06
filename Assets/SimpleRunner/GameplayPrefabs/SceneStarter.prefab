@@ -100,6 +100,7 @@ MonoBehaviour:
   coinObjectPool: {fileID: 5883368665302135155}
   backgroundObjectPool: {fileID: 4406398646302522404}
   worldView: {fileID: 2785686525030815176}
+  playerInput: {fileID: 0}
 --- !u!114 &7410052093089544736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d9999612fabd74c84bbc31af9f0849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundObjectGenerationSpeed: 9
-  prefab: {fileID: 1398409711612265602, guid: 51e37be969b38614bb421201edf9212d, type: 3}
 --- !u!1 &5535119844293574915
 GameObject:
   m_ObjectHideFlags: 0

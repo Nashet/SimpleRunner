@@ -1,4 +1,5 @@
-﻿using Nashet.SimpleRunner.Gameplay.Contracts;
+﻿using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.Models;
 
 namespace Nashet.SimpleRunner.Gameplay.ViewModels
@@ -9,19 +10,19 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	// transition the Context to another State.
 	public abstract class PlayerMovementState : IPlayerMovementStrategy
 	{
-		protected IPlayerMovementStatePattern _context;
-		private float _currentActionDuration;
+		protected IPlayerMovementStatePattern context;
+		private CollectableObjectTypeConfig config;
 
-		protected PlayerMovementState(float currentActionDuration)
+		protected PlayerMovementState(CollectableObjectTypeConfig config)
 		{
-			_currentActionDuration = currentActionDuration;
+			this.config = config;
 		}
 
-		public float CurrentActionDuration => _currentActionDuration;
+		public float EffectDuration => config.effectTime;
 
 		public void SetContext(IPlayerMovementStatePattern context)
 		{
-			this._context = context;
+			this.context = context;
 		}
 
 		public abstract void Move(PlayerMovementModel playerModel, float deltaTime);

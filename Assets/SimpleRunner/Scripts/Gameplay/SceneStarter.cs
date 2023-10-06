@@ -2,6 +2,7 @@
 using Nashet.SimpleRunner.Common.Services;
 using Nashet.SimpleRunner.Configs;
 using Nashet.SimpleRunner.Gameplay.Contracts;
+using Nashet.SimpleRunner.Gameplay.InputView;
 using Nashet.SimpleRunner.Gameplay.ViewModels;
 using Nashet.SimpleRunner.Gameplay.Views;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace Nashet.SimpleRunner
 		[SerializeField] private GameObjectPool coinObjectPool;
 		[SerializeField] private GameObjectPool backgroundObjectPool;
 		[SerializeField] private WorldView worldView;
+		[SerializeField] private PlayerInput playerInput;
+		[SerializeField] private Rigidbody2D rigidbody2;
 
 		public IWorldViewModel WorldVM { get; private set; }
 
@@ -30,9 +33,9 @@ namespace Nashet.SimpleRunner
 			var backgroundObjectFactory = new GameObjectPoolFactory(backgroundObjectPool);
 			var gameplayConfig = configService.GetConfig<GameplayConfig>();
 			MovementStrategyFactory movementStrategyFactory = new();
-			WorldVM = new WorldViewModel(gameplayConfig, coinObjectFactory, backgroundObjectFactory, movementStrategyFactory);
+			WorldVM = new WorldViewModel(gameplayConfig, coinObjectFactory, backgroundObjectFactory, movementStrategyFactory, rigidbody2);
 
-			WorldVM.InitializeWithView(worldView, playerView, cameraView);
+			WorldVM.InitializeWithView(worldView, playerView, cameraView, playerInput);//todo try without that
 		}
 	}
 }

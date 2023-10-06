@@ -13,8 +13,8 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		public event StateChangedDelegate OnStateChanged;
 		// A reference to the current state of the Context.
 		private IPlayerMovementStrategy defaultState = null;
-		private IPlayerMovementStrategy state = null;
-		private float lastTimeStrategyChanged;
+		public IPlayerMovementStrategy state { get; private set; }
+		public float lastTimeStrategyChanged { get; private set; }
 
 		public PlayerMovementStatePattern(IPlayerMovementStrategy state)
 		{
@@ -37,7 +37,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		// object.
 		public void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
-			if (state != defaultState && Time.time - lastTimeStrategyChanged > state.CurrentActionDuration)
+			if (state != defaultState && Time.time - lastTimeStrategyChanged > state.EffectDuration)
 			{
 				ChangeStateToDefault();
 			}

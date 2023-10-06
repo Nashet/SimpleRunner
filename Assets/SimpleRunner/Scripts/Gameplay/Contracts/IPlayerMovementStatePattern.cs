@@ -6,6 +6,9 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 
 	public interface IPlayerMovementStatePattern
 	{
+		IPlayerMovementStrategy state { get; }
+		float lastTimeStrategyChanged { get; }
+
 		event StateChangedDelegate OnStateChanged;
 
 		void ChangeStateTo(IPlayerMovementStrategy state);

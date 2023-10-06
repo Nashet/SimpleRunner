@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab358de2cd4e71b4bb9b8f3231d0f204, type: 3}
-  m_Name: CollectableEffectFastRunConfig
+  m_Script: {fileID: 11500000, guid: b9586f18a860886439ab2beac817617f, type: 3}
+  m_Name: JumpActionConfig
   m_EditorClassIdentifier: 
-  type: 0
-  speed: 12
+  sprite: {fileID: 21300000, guid: aa5b9413618aa9849b9f30dbd69ab7b7, type: 3}
+  effectTime: 1
+  effect: {fileID: 11400000, guid: a9b29041a3fcb6647bae277564158f4e, type: 2}

@@ -11,6 +11,6 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 	{
 		void Move(PlayerMovementModel playerModel, float deltaTime);
 		void SetContext(IPlayerMovementStatePattern context);
-		float CurrentActionDuration { get; }
+		float EffectDuration { get; }
 	}
 }

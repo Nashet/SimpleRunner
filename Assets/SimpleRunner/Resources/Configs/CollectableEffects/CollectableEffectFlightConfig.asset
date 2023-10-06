@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CollectableEffectFlightConfig
   m_EditorClassIdentifier: 
   type: 1
-  speed: 0.5
-  height: 2
-  takeofSpeed: 0.1
+  speed: 10
+  height: 1.6
+  takeofSpeed: 8
+  timeToLand: 1

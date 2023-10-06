@@ -10,28 +10,29 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// </summary>
 	public class FlyingMovementStrategy : PlayerMovementState
 	{
-		private float flightSpeed;
-		private float maxHeight;
-		private float takeofSpeed;
+		private CollectableEffectFlightConfig config;
 
-		public FlyingMovementStrategy(CollectableObjectTypeConfig flightConfig) : base(flightConfig.effectTime)
+		public FlyingMovementStrategy(CollectableObjectTypeConfig flightConfig) : base(flightConfig)
 		{
-			var config = flightConfig.effect as CollectableEffectFlightConfig;
-			flightSpeed = config.speed;
-			maxHeight = config.height;
-			takeofSpeed = config.takeofSpeed;
+			config = flightConfig.effect as CollectableEffectFlightConfig;
 		}
 
 		public override void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
-			var oldPosition = playerModel.Position;
-			float newY = oldPosition.y < maxHeight ? oldPosition.y + takeofSpeed : oldPosition.y;
-			playerModel.Position = new Vector3(oldPosition.x + flightSpeed, newY, oldPosition.z);
+			var mustLand = Time.time - context.lastTimeStrategyChanged > EffectDuration - config.timeToLand;
+			//if (mustLand)
+			//	Debug.Log($"Must land");
+			playerModel.Rb.velocity = new Vector3(config.speed, mustLand ? 0 : config.takeofSpeed, 0);
+			if (playerModel.Rb.position.y > config.height)
+			{
+				playerModel.Rb.position = new Vector2(playerModel.Rb.position.x, config.height);
+			}
+			playerModel.Position = playerModel.Rb.position;
 		}
 
 		public override string ToString()
 		{
-			return $"FlyingMovementStrategy {flightSpeed}";
+			return $"FlyingMovementStrategy {config.speed}";
 		}
 	}
 }

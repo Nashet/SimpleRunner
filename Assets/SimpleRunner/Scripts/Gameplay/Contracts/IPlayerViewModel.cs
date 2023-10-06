@@ -14,6 +14,6 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 		event OnEffectEndedDelegate OnEffectEnded;
 		event OnPlayerMovedDelegate OnPlayerMoved;
 
-		void InitializeWithView(IPlayerView playerView, ICameraView cameraView);
+		void InitializeWithView(IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput);
 	}
 }

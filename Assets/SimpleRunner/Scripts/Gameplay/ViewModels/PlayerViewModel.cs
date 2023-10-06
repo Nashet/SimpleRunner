@@ -20,20 +20,23 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private PlayerMovementModel playerModel;
 
 		private IPlayerMovementStatePattern playerMovementContext;
-		private IMovementStrategyFactory movementStateFactory;
 		private IPlayerMovementStrategy defaultMovementSate;
+		private IPlayerMovementStrategy jumpMovementSate;
+		private IMovementStrategyFactory movementStateFactory;
 
-		public PlayerViewModel(GameplayConfig gameplayConfig, IMovementStrategyFactory movementStrategyFactory)
+		public PlayerViewModel(GameplayConfig gameplayConfig, IMovementStrategyFactory movementStrategyFactory, Rigidbody2D rigidbody2D)
 		{
 			this.gameplayConfig = gameplayConfig;
 			this.movementStateFactory = movementStrategyFactory;
 
+			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition, rigidbody2D);
+			playerModel.OnPlayerMoved += OnPlayerMovedHandler;
+			playerModel.Position = rigidbody2D.position;
+
 			defaultMovementSate = movementStrategyFactory.CreateMovementStrategy(gameplayConfig.defaultPlayerAction, gameplayConfig);
 			this.playerMovementContext = new PlayerMovementStatePattern(defaultMovementSate);
 			playerMovementContext.OnStateChanged += OnMovementStateChangedHandler;
-
-			playerModel = new PlayerMovementModel(gameplayConfig.playerStartingPosition);
-			playerModel.OnPlayerMoved += OnPlayerMovedHandler;
+			jumpMovementSate = movementStrategyFactory.CreateMovementStrategy(gameplayConfig.playerJumpAction, gameplayConfig);
 		}
 
 		private void OnMovementStateChangedHandler(IPlayerMovementStrategy newState)
@@ -47,14 +50,19 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			OnPlayerMoved?.Invoke(newPosition);
 		}
 
-		public void InitializeWithView(IPlayerView playerView, ICameraView cameraView)
+		public void InitializeWithView(IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput)
 		{
 			playerModel.Position = playerView.Position;
-
 			playerView.OnPlayerCollided += OnPlayerCollidedHandler;
 
 			OnPlayerMoved += playerView.PlayerMovedHandler;
 			OnPlayerMoved += cameraView.PlayerMovedHandler;
+			playerInput.OnMouseClicked += MouseClickedHandler;
+		}
+
+		private void MouseClickedHandler()
+		{
+			playerMovementContext.ChangeStateTo(jumpMovementSate);
 		}
 
 		private void OnPlayerCollidedHandler(GameObject other)

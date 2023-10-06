@@ -7,9 +7,9 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 {
 	public class CoinSpawnerViewModel : ICoinSpawnerViewModel
 	{
-		private IPlayerViewModel playerVM;
-		private GameplayConfig gameplayConfig;
-		private IGameObjectFactory gameObjectFactory;
+		protected IPlayerViewModel playerVM;
+		protected GameplayConfig gameplayConfig;
+		protected IGameObjectFactory gameObjectFactory;
 
 		public CoinSpawnerViewModel(IPlayerViewModel playerVM, GameplayConfig gameplayConfig, IGameObjectFactory gameObjectFactory)
 		{
@@ -37,14 +37,14 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			SpawnNewCoin(GetCoinSpawnPosition(playerVM, gameplayConfig));
 		}
 
-		private void SpawnNewCoin(Vector2 position)
+		protected virtual void SpawnNewCoin(Vector2 position)
 		{
 			var newObject = gameObjectFactory.CreateObject();
 			newObject.transform.position = position;
 			newObject.SetActive(true);
 			var collectableView = newObject.GetComponent<ICollectableView>();
 
-			var randomElement = UnityEngine.Random.Range(0, gameplayConfig.collectableObjectTypes.Count); //todo inject Random
+			var randomElement = Random.Range(0, gameplayConfig.collectableObjectTypes.Count); //todo inject Random
 
 			collectableView.CollidableObjectType = gameplayConfig.collectableObjectTypes[randomElement];
 			newObject.GetComponent<SpriteRenderer>().sprite = collectableView.CollidableObjectType.sprite;
