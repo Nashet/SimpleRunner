@@ -1,4 +1,4 @@
-﻿using Assets.SimpleRunner.Patterns.Contracts;
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Nashet.SimpleRunner.Gameplay.InputView
 {
 	/// <summary>
-	/// The only goal is thandle player input
+	/// The only goal is to handle player input
 	/// </summary>
 	public class PlayerInput : MonoBehaviour, IPlayerInput
 	{

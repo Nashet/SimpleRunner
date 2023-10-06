@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.SimpleRunner.Patterns.Contracts //todo rename it
+namespace Nashet.SimpleRunner.Contracts.Patterns
 {
 	/// <summary>
 	/// Represents factory pattern. Creates standart gameobjects

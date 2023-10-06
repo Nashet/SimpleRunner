@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.SimpleRunner.Patterns.Contracts
+namespace Nashet.SimpleRunner.Contracts.Patterns
 {
 	/// <summary>
 	/// Represents object pool pattern

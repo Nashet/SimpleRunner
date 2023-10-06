@@ -4,7 +4,6 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
 	public interface IMovementStrategyFactory
 	{
-		//todo rename
-		IPlayerMovementStrategy CreateMovementStrategy(CollectableObjectTypeConfig config, GameplayConfig gameplayConfig);
+		IPlayerMovementStrategy Get(CollectableObjectTypeConfig config, GameplayConfig gameplayConfig);
 	}
 }

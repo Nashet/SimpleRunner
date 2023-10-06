@@ -1,5 +1,5 @@
-﻿using Assets.SimpleRunner.Patterns.Contracts;
-using Nashet.SimpleRunner.Configs;
+﻿using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Contracts.Patterns;
 using Nashet.SimpleRunner.Gameplay.Contracts;
 using UnityEngine;
 

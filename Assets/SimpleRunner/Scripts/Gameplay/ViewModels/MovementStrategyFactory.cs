@@ -12,7 +12,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public class MovementStrategyFactory : IMovementStrategyFactory
 	{
 		//toso: its possible to cache strategies and reuse them
-		public IPlayerMovementStrategy CreateMovementStrategy(CollectableObjectTypeConfig config, GameplayConfig gameplayConfig)
+		public IPlayerMovementStrategy Get(CollectableObjectTypeConfig config, GameplayConfig gameplayConfig)
 		{
 			return config.effect.type switch
 			{

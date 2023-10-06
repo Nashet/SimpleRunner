@@ -36,10 +36,10 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			playerModel.OnPlayerMoved += OnPlayerMovedHandler;
 			playerModel.Position = rigidbody2D.position;
 
-			defaultMovementSate = movementStrategyFactory.CreateMovementStrategy(gameplayConfig.defaultPlayerAction, gameplayConfig);
+			defaultMovementSate = movementStrategyFactory.Get(gameplayConfig.defaultPlayerAction, gameplayConfig);
 			this.playerMovementContext = new PlayerMovementStatePattern(defaultMovementSate);
 			playerMovementContext.OnStateChanged += OnMovementStateChangedHandler;
-			jumpMovementSate = movementStrategyFactory.CreateMovementStrategy(gameplayConfig.playerJumpAction, gameplayConfig);
+			jumpMovementSate = movementStrategyFactory.Get(gameplayConfig.playerJumpAction, gameplayConfig);
 		}
 
 		private void OnMovementStateChangedHandler(IPlayerMovementStrategy newState)
@@ -85,7 +85,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private void SetNewMovementState(CollectableObjectTypeConfig newEffect)
 		{
-			var currentMovementStrategy = movementStateFactory.CreateMovementStrategy(newEffect, gameplayConfig);
+			var currentMovementStrategy = movementStateFactory.Get(newEffect, gameplayConfig);
 			playerMovementContext.ChangeStateTo(currentMovementStrategy);
 		}
 

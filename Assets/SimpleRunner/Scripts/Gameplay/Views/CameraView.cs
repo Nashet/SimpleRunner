@@ -12,7 +12,6 @@ namespace Nashet.SimpleRunner.Gameplay.Views
 		{
 			switch (propertyName)
 			{
-
 				case nameof(IPlayerViewModel.Position):
 					UpdatePosition(playerViewModel.Position);
 					break;
