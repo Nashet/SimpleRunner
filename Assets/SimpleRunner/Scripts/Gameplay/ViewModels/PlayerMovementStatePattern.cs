@@ -1,4 +1,5 @@
-﻿using Nashet.SimpleRunner.Gameplay.Contracts;
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
+using Nashet.SimpleRunner.Gameplay.Contracts;
 using Nashet.SimpleRunner.Gameplay.Models;
 using System;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public class PlayerMovementStatePattern : IPlayerMovementStatePattern
 	{
 		public event StateChangedDelegate OnStateChanged;
+		public event PropertyChangedEventHandler<IPlayerMovementStatePattern> OnPropertyChanged;
+
 		// A reference to the current state of the Context.
 		private IPlayerMovementStrategy defaultState = null;
 		public IPlayerMovementStrategy state { get; private set; }
@@ -31,13 +34,14 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			this.state.SetContext(this);
 			lastTimeStrategyChanged = Time.time;
 			OnStateChanged?.Invoke(state);
+			RiseOnPropertyChanged(nameof(state));
 		}
 
 		// The Context delegates part of its behavior to the current State
 		// object.
 		public void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
-			if (state != defaultState && Time.time - lastTimeStrategyChanged > state.EffectDuration)
+			if (state != defaultState && Time.time - lastTimeStrategyChanged > state.config.effectTime)
 			{
 				ChangeStateToDefault();
 			}
@@ -47,6 +51,11 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		private void ChangeStateToDefault()
 		{
 			ChangeStateTo(defaultState);
+		}
+
+		public void RiseOnPropertyChanged(string propertyName)
+		{
+			OnPropertyChanged?.Invoke(this, propertyName);
 		}
 	}
 }

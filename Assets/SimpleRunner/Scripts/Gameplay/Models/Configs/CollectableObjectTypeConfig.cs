@@ -11,6 +11,7 @@ namespace Nashet.SimpleRunner.Configs
 	public class CollectableObjectTypeConfig : ScriptableObject
 	{
 		public Sprite sprite;
+		public AudioClip onCollectedSound;
 		public float effectTime = 10f;
 		public CollectableEffectConfig effect;
 	}

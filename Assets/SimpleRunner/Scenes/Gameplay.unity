@@ -207,6 +207,17 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7668312673550451647, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
   m_PrefabInstance: {fileID: 1482305246}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2027833409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8063220057413742218, guid: 235ce0256e4bd1146abbbc970cfdd2c4, type: 3}
+  m_PrefabInstance: {fileID: 1482305246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28a69e10c4e36f42935b57a03db6a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2606787974744812550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +310,10 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 1482305247}
+    - target: {fileID: 1773098007465972368, guid: 7893f4391a4d3624db6fcbd7940ccff2, type: 3}
+      propertyPath: playerSoundsView
+      value: 
+      objectReference: {fileID: 2027833409}
     - target: {fileID: 3928725191132176821, guid: 7893f4391a4d3624db6fcbd7940ccff2, type: 3}
       propertyPath: m_Name
       value: SceneStarter

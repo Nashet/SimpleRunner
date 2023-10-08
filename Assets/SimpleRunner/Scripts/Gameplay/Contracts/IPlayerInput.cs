@@ -1,9 +1,10 @@
-﻿namespace Nashet.SimpleRunner.Gameplay.Contracts
-{
-	public delegate void ControlGivenDelegate(float horizontalInput, float verticalInput);
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
 
-	public interface IPlayerInput
+namespace Nashet.SimpleRunner.Gameplay.Contracts
+{
+	public interface IPlayerInput : IPropertyChangeNotifier<IPlayerInput>
 	{
-		event ControlGivenDelegate OnContolGiven;
+		float HorizontalInput { get; }
+		float VerticalInput { get; }
 	}
 }

@@ -8,6 +8,6 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 	{
 		event OnUpdateHappenedDelegate OnUpdateHappened;
 
-		void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput);
+		void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput, IPlayerSoundsView playerSoundsView);
 	}
 }

@@ -26,9 +26,9 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			new CoinSpawnerViewModel(playerVM, gameplayConfig, gameObjectFactory);
 		}
 
-		public void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput)
+		public void InitializeWithView(IWorldView worldView, IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput, IPlayerSoundsView playerSoundsView)
 		{
-			playerVM.InitializeWithView(playerView, cameraView, playerInput);
+			playerVM.InitializeWithView(playerView, cameraView, playerInput, playerSoundsView);
 			OnUpdateHappened += worldView.UpdateHappenedHandler;
 			worldView.Initialize(gameplayConfig, backgroundObjectFactory);
 		}

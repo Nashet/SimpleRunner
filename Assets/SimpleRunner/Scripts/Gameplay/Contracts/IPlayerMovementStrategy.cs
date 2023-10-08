@@ -1,4 +1,5 @@
-﻿using Nashet.SimpleRunner.Gameplay.Models;
+﻿using Nashet.SimpleRunner.Configs;
+using Nashet.SimpleRunner.Gameplay.Models;
 
 namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
@@ -11,6 +12,6 @@ namespace Nashet.SimpleRunner.Gameplay.Contracts
 	{
 		void Move(PlayerMovementModel playerModel, float deltaTime);
 		void SetContext(IPlayerMovementStatePattern context);
-		float EffectDuration { get; }
+		CollectableObjectTypeConfig config { get; }
 	}
 }

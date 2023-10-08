@@ -11,14 +11,12 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	public abstract class PlayerMovementState : IPlayerMovementStrategy
 	{
 		protected IPlayerMovementStatePattern context;
-		private CollectableObjectTypeConfig config;
+		public CollectableObjectTypeConfig config { get; private set; }
 
 		protected PlayerMovementState(CollectableObjectTypeConfig config)
 		{
 			this.config = config;
 		}
-
-		public float EffectDuration => config.effectTime;
 
 		public void SetContext(IPlayerMovementStatePattern context)
 		{

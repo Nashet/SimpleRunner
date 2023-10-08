@@ -22,6 +22,7 @@ namespace Nashet.SimpleRunner
 		[SerializeField] private WorldView worldView;
 		[SerializeField] private PlayerInput playerInput;
 		[SerializeField] private Rigidbody2D rigidbody2;
+		[SerializeField] private PlayerSoundsView playerSoundsView;
 
 		public IWorldViewModel WorldVM { get; private set; }
 
@@ -35,7 +36,7 @@ namespace Nashet.SimpleRunner
 			MovementStrategyFactory movementStrategyFactory = new();
 			WorldVM = new WorldViewModel(gameplayConfig, coinObjectFactory, backgroundObjectFactory, movementStrategyFactory, rigidbody2);
 
-			WorldVM.InitializeWithView(worldView, playerView, cameraView, playerInput);//todo try without that
+			WorldVM.InitializeWithView(worldView, playerView, cameraView, playerInput, playerSoundsView);//todo try without that
 		}
 	}
 }

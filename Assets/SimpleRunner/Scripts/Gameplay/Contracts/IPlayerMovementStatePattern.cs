@@ -1,10 +1,11 @@
-﻿using Nashet.SimpleRunner.Gameplay.Models;
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
+using Nashet.SimpleRunner.Gameplay.Models;
 
 namespace Nashet.SimpleRunner.Gameplay.Contracts
 {
 	public delegate void StateChangedDelegate(IPlayerMovementStrategy newState);
 
-	public interface IPlayerMovementStatePattern
+	public interface IPlayerMovementStatePattern : IPropertyChangeNotifier<IPlayerMovementStatePattern>
 	{
 		IPlayerMovementStrategy state { get; }
 		float lastTimeStrategyChanged { get; }

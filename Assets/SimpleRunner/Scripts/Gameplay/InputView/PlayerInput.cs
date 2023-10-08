@@ -1,4 +1,5 @@
-﻿using Nashet.SimpleRunner.Gameplay.Contracts;
+﻿using Nashet.SimpleRunner.Contracts.Patterns;
+using Nashet.SimpleRunner.Gameplay.Contracts;
 using UnityEngine;
 
 namespace Nashet.SimpleRunner.Gameplay.InputView
@@ -8,15 +9,23 @@ namespace Nashet.SimpleRunner.Gameplay.InputView
 	/// </summary>
 	public class PlayerInput : MonoBehaviour, IPlayerInput
 	{
-		public event ControlGivenDelegate OnContolGiven;
+		public float HorizontalInput { get; private set; }
+		public float VerticalInput { get; private set; }
+
+		public event PropertyChangedEventHandler<IPlayerInput> OnPropertyChanged;
+
+		public void RiseOnPropertyChanged(string propertyName)
+		{
+			OnPropertyChanged?.Invoke(this, propertyName);
+		}
 
 		private void Update()
 		{
 			if (Input.anyKeyDown)
 			{
-				float horizontalInput = Input.GetAxis("Horizontal");
-				float verticalInput = Input.GetAxis("Vertical");
-				OnContolGiven?.Invoke(horizontalInput, verticalInput);
+				HorizontalInput = Input.GetAxis("Horizontal");
+				VerticalInput = Input.GetAxis("Vertical");
+				RiseOnPropertyChanged(nameof(HorizontalInput));
 			}
 		}
 	}

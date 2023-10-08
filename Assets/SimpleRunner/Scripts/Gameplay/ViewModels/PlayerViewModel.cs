@@ -22,7 +22,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		public float Direction => playerModel.Direction;
 
 
-		private IPlayerMovementStatePattern playerMovementContext;
+		public IPlayerMovementStatePattern playerMovementContext { get; private set; }
 		private IPlayerMovementStrategy defaultMovementSate;
 		private IPlayerMovementStrategy jumpMovementSate;
 		private IMovementStrategyFactory movementStateFactory;
@@ -40,6 +40,7 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 			this.playerMovementContext = new PlayerMovementStatePattern(defaultMovementSate);
 			playerMovementContext.OnStateChanged += OnMovementStateChangedHandler;
 			jumpMovementSate = movementStrategyFactory.Get(gameplayConfig.playerJumpAction, gameplayConfig);
+			playerMovementContext.OnPropertyChanged += PropertyChangedHandler;
 		}
 
 		private void OnMovementStateChangedHandler(IPlayerMovementStrategy newState)
@@ -50,29 +51,20 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 
 		private void OnPlayerMovedHandler(Vector3 newPosition)
 		{
-			OnPropertyChanged?.Invoke(this, nameof(Position));
+			RiseOnPropertyChanged(nameof(Position));
 		}
 
-		public void InitializeWithView(IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput)
+		public void InitializeWithView(IPlayerView playerView, ICameraView cameraView, IPlayerInput playerInput, IPlayerSoundsView playerSoundsView)
 		{
 			playerModel.Position = playerView.Position;
 			playerView.OnPlayerCollided += OnPlayerCollidedHandler;
-			playerInput.OnContolGiven += ControlGivenHandler;
 
 			OnPropertyChanged += playerView.PropertyChangedHandler;
 			OnPropertyChanged += cameraView.PropertyChangedHandler;
-		}
+			OnPropertyChanged += playerSoundsView.PropertyChangedHandler;
+			OnCollectedObject += playerSoundsView.CoinCollectedHandler;
 
-		private void ControlGivenHandler(float horizontalInput, float verticalInput)
-		{
-			if (verticalInput > 0)
-				playerMovementContext.ChangeStateTo(jumpMovementSate);
-
-			if (horizontalInput != 0)
-			{
-				playerModel.Direction = horizontalInput;
-				OnPropertyChanged?.Invoke(this, nameof(Direction));
-			}
+			playerInput.OnPropertyChanged += PropertyChangedHandler;
 		}
 
 		private void OnPlayerCollidedHandler(GameObject other)
@@ -92,6 +84,34 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 		public void Update(float deltaTime)
 		{
 			playerMovementContext.Move(playerModel, deltaTime);
+		}
+
+		public void PropertyChangedHandler(IPlayerMovementStatePattern sender, string propertyName)
+		{
+			if (propertyName == nameof(IPlayerMovementStatePattern.state))
+			{
+				RiseOnPropertyChanged(nameof(playerMovementContext));
+			}
+		}
+
+		public void PropertyChangedHandler(IPlayerInput sender, string propertyName)
+		{
+			if (propertyName == nameof(IPlayerInput.HorizontalInput))
+			{
+				if (sender.VerticalInput > 0)
+					playerMovementContext.ChangeStateTo(jumpMovementSate);
+
+				if (sender.HorizontalInput != 0)
+				{
+					playerModel.Direction = sender.HorizontalInput;
+					RiseOnPropertyChanged(nameof(Direction));
+				}
+			}
+		}
+
+		public void RiseOnPropertyChanged(string propertyName)
+		{
+			OnPropertyChanged?.Invoke(this, propertyName);
 		}
 	}
 }

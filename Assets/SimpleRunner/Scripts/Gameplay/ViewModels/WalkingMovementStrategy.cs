@@ -11,23 +11,23 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// </summary>
 	public class WalkingMovementStrategy : PlayerMovementState
 	{
-		private CollectableEffectRunConfig config;
+		private CollectableEffectRunConfig typedConfig;
 		public WalkingMovementStrategy(CollectableObjectTypeConfig config) : base(config)
 		{
-			this.config = config.effect as CollectableEffectRunConfig;
+			this.typedConfig = config.effect as CollectableEffectRunConfig;
 		}
 
 		public override void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
 			var convertedDirection = playerModel.Direction >= 0 ? 1 : -1;
 
-			playerModel.Rb.velocity = new Vector3(config.speed * convertedDirection, 0, 0);
+			playerModel.Rb.velocity = new Vector3(typedConfig.speed * convertedDirection, 0, 0);
 			playerModel.Position = playerModel.Rb.position;
 		}
 
 		public override string ToString()
 		{
-			return $"WalkingMovementStrategy {config.speed}";
+			return $"WalkingMovementStrategy {typedConfig.speed}";
 		}
 	}
 }

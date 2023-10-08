@@ -8,5 +8,6 @@
 	public interface IPropertyChangeNotifier<T>
 	{
 		event PropertyChangedEventHandler<T> OnPropertyChanged;
+		void RiseOnPropertyChanged(string propertyName);
 	}
 }

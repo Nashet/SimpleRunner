@@ -10,30 +10,30 @@ namespace Nashet.SimpleRunner.Gameplay.ViewModels
 	/// </summary>
 	public class FlyingMovementStrategy : PlayerMovementState
 	{
-		private CollectableEffectFlightConfig config;
+		private CollectableEffectFlightConfig typedConfig;
 
 		public FlyingMovementStrategy(CollectableObjectTypeConfig flightConfig) : base(flightConfig)
 		{
-			config = flightConfig.effect as CollectableEffectFlightConfig;
+			typedConfig = flightConfig.effect as CollectableEffectFlightConfig;
 		}
 
 		public override void Move(PlayerMovementModel playerModel, float deltaTime)
 		{
-			var mustLand = Time.time - context.lastTimeStrategyChanged > EffectDuration - config.timeToLand;
+			var mustLand = Time.time - context.lastTimeStrategyChanged > config.effectTime - typedConfig.timeToLand;
 			//if (mustLand)
 			//	Debug.Log($"Must land");
 			var convertedDirection = playerModel.Direction >= 0 ? 1 : -1;
-			playerModel.Rb.velocity = new Vector3(config.speed * convertedDirection, mustLand ? 0 : config.takeofSpeed, 0);
-			if (playerModel.Rb.position.y > config.height)
+			playerModel.Rb.velocity = new Vector3(typedConfig.speed * convertedDirection, mustLand ? 0 : typedConfig.takeofSpeed, 0);
+			if (playerModel.Rb.position.y > typedConfig.height)
 			{
-				playerModel.Rb.position = new Vector2(playerModel.Rb.position.x, config.height);
+				playerModel.Rb.position = new Vector2(playerModel.Rb.position.x, typedConfig.height);
 			}
 			playerModel.Position = playerModel.Rb.position;
 		}
 
 		public override string ToString()
 		{
-			return $"FlyingMovementStrategy {config.speed}";
+			return $"FlyingMovementStrategy {typedConfig.speed}";
 		}
 	}
 }
